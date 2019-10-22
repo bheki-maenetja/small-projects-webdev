@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    * {
+      box-sizing: border-box;
+      color: white;
+    }
+
+    /* Header */
+
+    .header {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: dodgerblue;
+      border-radius: 15px;
+      box-shadow: 5px 5px black;
+    }
+
+    .inner-header {
+      padding: 10px;
+      align: center;
+    }
+
+    .header-heading {
+      font-size: 100px;
+      color: white;
+      opacity: 0.9;
+      text-shadow: 5px 5px black;
+      text-align: center;
+      font-family: helvetica;
+      font-weight: 600;
+    }
+
+    .header-sub-heading {
+      font-size: 25px;
+      color: white;
+      opacity: 0.9;
+      text-shadow: 2px 2px black;
+      text-align: center;
+      font-family: helvetica;
+      font-weight: 600;
+    }
+
+    /* Navigation Menu */
+
+    .navbar {
+      position: sticky;
+      top: 0;
+    }
+
+    .nav-menu {
+      display: flex;
+      list-style-type: none;
+      background-color: navy;
+      overflow: hidden;
+      border: 5px solid cyan;
+      border-radius: 10px;
+      width: 100%;
+    }
+
+    .nav-menu li a {
+      padding: 20px;
+      display: flex;
+      font-family: helvetica;
+      text-decoration: none;
+      color: white;
+      font-size: 2vw;
+      font-weight: 600;
+      height: 100%;
+      border-left: 2px solid cyan;
+      border-right: 2px solid cyan;
+    }
+
+    .nav-menu li a:hover {
+      color: navy;
+      background-color: dodgerblue;
+    }
+
+    /* Main Content */
+
+    body {
+        background-color: navy;
+        padding: 10px;
+    }
+
+    .main-content {
+      display: flex;
+      align-items: flex-start;
+      flex-direction: row;
+      padding: 30px;
+      background-color: dodgerblue;
+      box-shadow: 5px 5px black;
+      border-radius: 15px;
+      overflow-y: scroll;
+    }
+
+    .content-section {
+      background-color: deepskyblue;
+      padding: 20px;
+      border-radius: 15px;
+      box-shadow: 5px 5px black;
+      margin: 15px;
+    }
+
+    .content-section h1 {
+      font-family: helvetica;
+      font-weight: 600;
+      text-shadow: 1px 1px black;
+      font-size: 50px;
+    }
+
+    .content-section p {
+      text-shadow: 1px 1px black;
+      font-size: 20px;
+      font-family: helvetica;
+    }
+
+    .content-image {
+      border-radius: 5px;
+      max-height: 600px;
+      margin: 20px;
+    }
+
+    /* Media Queries */
+  </style>
+</head>
+<body>
+  <header class="header" style="background-color: dodgerblue">
+    <div class="inner-header">
+      <img src="https://i.imgur.com/AG6MObG.jpg" class="header-image">
+      <h1 class="header-heading">Magic MacGuffins</h1>
+      <h2 class="header-sub-heading">The #1 seller of pop culture's most popular items!</h2>
+    </div>
+  </header>
+  <nav class="navbar">
+    <ul class="nav-menu">
+      <li><a href="#">Home</a></li>
+      <li><a href="#">About us</a></li>
+      <li><a href="#">Sales</a></li>
+      <li><a href="#">More Information</a></li>
+      <li><a href="#">Contact Us</a></li>
+      <li><a href="#">Help</a></li>
+    </ul>
+  </nav>
+  <main class="main-content" id="themain">
+    <section class="content-section">
+      <h1>The Infinity Gauntlet</h1>
+      <img src="https://i.imgur.com/AG6MObG.jpg" class="content-image">
+      <p>Price: $25,000,000 (discout available for iOS students)</p>
+      <button type="button" name="button">More</button>
+      <p class="description">A clever description</p>
+    </section>
+    <section class="content-section">
+      <h1>Kylo Ren's Lightsaber</h1>
+      <img src="https://i.imgur.com/AG6MObG.jpg" class="content-image">
+      <p></p>
+      <p>Price: $25,000,000 (discout available for iOS students)</p>
+    </section>
+    <section class="content-section">
+      <h1>The One Ring</h1>
+      <img src="https://i.imgur.com/AG6MObG.jpg" class="content-image">
+      <p></p>
+      <p>Price: $25,000,000 (discout available for iOS students)</p>
+    </section>
+    <section class="content-section">
+      <h1>Mjolnir</h1>
+      <img src="https://i.imgur.com/AG6MObG.jpg" class="content-image">
+      <p></p>
+      <p>Price: $25,000,000 (discout available for iOS students)</p>
+    </section>
+    <section class="content-section">
+      <h1>Arya Stark's Dagger</h1>
+      <img src="https://i.imgur.com/AG6MObG.jpg" class="content-image">
+      <p></p>
+      <p>Price: $25,000,000 (discout available for iOS students)</p>
+    </section>
+    <section class="content-section">
+      <h1>Cap's Shield</h1>
+      <img src="https://i.imgur.com/AG6MObG.jpg" class="content-image">
+      <p></p>
+      <p>Price: $25,000,000 (discout available for iOS students)</p>
+    </section>
+    <section class="content-section">
+      <h1>Cloak of Invisibility</h1>
+      <img src="https://i.imgur.com/AG6MObG.jpg" class="content-image">
+      <p></p>
+      <p>Price: $25,000,000 (discout available for iOS students)</p>
+    </section>
+    <section class="content-section">
+      <h1>Rafiki's Stick</h1>
+      <img src="https://i.imgur.com/AG6MObG.jpg" class="content-image">
+      <p></p>
+      <p>Price: $25,000,000 (discout available for iOS students)</p>
+    </section>
+    <section class="content-section">
+      <h1>Arc Reactor</h1>
+      <img src="https://i.imgur.com/AG6MObG.jpg" class="content-image">
+      <p></p>
+      <p>Price: $25,000,000 (discout available for iOS students)</p>
+    </section>
+  </main>
+  <script>
+    $('.content-image').on('click', function() {
+        $(this).toggle();
+    });
+  </script>
+</body>
+</html>

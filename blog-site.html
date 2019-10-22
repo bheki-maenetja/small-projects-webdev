@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<head>
+  <style>
+    /* The Header */
+    .header {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: url("https://i.imgur.com/QH5D1Fn.jpg");
+      background-size: cover;
+    }
+
+    .inner-header {
+      padding: 5px;
+    }
+
+    .header-image {
+      max-height: 300px;
+      margin: 50 500 -50 500;
+      border: 5px solid white;
+      border-radius: 100%;
+    }
+
+    .header-heading {
+      font-size: 10vw;
+      color: white;
+      opacity: 0.9;
+      text-shadow: 10px 10px black;
+      text-align: center;
+      font-family: helvetica;
+      font-weight: 600;
+    }
+
+    /* The Navigation Bar */
+
+    .navbar {
+      position: sticky;
+      margin: -20px;
+    }
+
+    .nav-menu {
+      display: flex;
+      list-style-type: none;
+      background-color: black;
+      overflow: hidden;
+      border: 2px solid cyan;
+    }
+
+    .nav-menu li a {
+      padding: 20px;
+      display: flex;
+      font-family: helvetica;
+      text-decoration: none;
+      color: white;
+      font-size: 2vw;
+      font-weight: 600;
+      height: 100%;
+      text-align: center;
+    }
+
+    .nav-menu li a:hover {
+      color: green;
+      background-color: white;
+    }
+
+    /* Main Content */
+
+    .main-content {
+      display: flex;
+      align-items: flex-start;
+      flex-direction: row;
+    }
+
+    .content-container {
+      display: flex;
+      flex-direction: column;
+      align-content: space-between;
+      flex: 100%;
+      padding: 5px;
+      background-color: #050;
+      max-width: 100%;
+    }
+
+    .content-section {
+      background-color:#090;
+      display: flex;
+      flex-direction: column;
+      align-content: space-around;
+      margin: 5px;
+      padding: 15px;
+      overflow-x: scroll;
+      overflow-y: scroll;
+      max-width: 100%;
+    }
+
+    .content-section h1 {
+      font-size: 5vw;
+      font-family: helvetica;
+      font-weight: 600;
+      color: white;
+      text-shadow: 2px 2px black;
+      margin: 20px;
+    }
+
+    .card-container {
+      display: flex;
+      flex-direction: row;
+      align-items: baseline;
+      max-width: 100%;
+      background-color: #333;
+      box-shadow: 3px 3px #555;
+      overflow: scroll;
+      padding: 20px;
+    }
+
+    .card-container a {
+      text-decoration: none;
+    }
+
+    .image-card {
+      margin: 20px;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .image-card img {
+      max-height: 300px;
+      border-radius: 0px 25px 0 0;
+    }
+
+    .image-card div {
+      padding: 15px;
+      background-color: #8f0;
+      border-radius: 0 0 0px 25px;
+    }
+
+    .image-card div p {
+      color: black;
+      font-family: helvetica;
+      font-weight: 600;
+    }
+
+    /* Footer */
+
+    .content-section[id="footer"] {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+      padding: 5px;
+      margin: 0 auto;
+    }
+
+    .footer-menu {
+      display: flex;
+      flex-direction: column;
+      background-color: #333;
+      box-shadow: 2px 2px 2px black;
+      padding: 10px;
+      margin: 3px;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      list-style: none;
+    }
+
+    .footer-menu h1 {
+      color: white;
+      font-size: 2vw;
+      text-align: center;
+      font-family: helvetica;
+    }
+
+    .footer-menu a {
+      display: flex;
+      text-align: center;
+      font-size: 100%;
+      font-family: helvetica;
+      padding: 15px;
+      text-decoration: none;
+      color: white;
+      font-weight: 500;
+    }
+
+    .footer-menu a:hover {
+      background-color: white;
+      color: green;
+    }
+
+    /* Media Queries */
+
+    @media (max-width: 500px) {
+      .content-section {
+        max-height: 200px;
+        padding: 5px;
+      }
+
+      .card-container {
+        padding: 0px;
+      }
+
+      .image-card {
+        margin: 10px;
+      }
+
+      .image-card img {
+        max-height: 50px;
+        border-radius: 0 10px 0 0;
+      }
+
+      .image-card div {
+        max-height: 10px;
+        font-size: 2px;
+        border-radius: 0 0 0 5px;
+        padding: 5px;
+      }
+
+      .nav-menu li a {
+        padding: 12px;
+        font-size: 2vw;
+      }
+
+      .navbar {
+        position: sticky;
+        margin: -20px;
+      }
+
+      .header-heading {
+        text-shadow: 5px 5px black;
+      }
+
+      .header-image {
+        margin: 10 500 0 500;
+        max-height: 100px;
+      }
+
+      .content-section[id="footer"] {
+        max-height: 100px;
+        justify-content: center;
+        align-items: center;
+        padding: 10px;
+      }
+
+      .footer-menu {
+        max-height: 90px;
+        margin: 0px;
+      }
+
+      .footer-menu h1 {
+        color: white;
+        font-size: 4vw;
+        text-align: center;
+        font-family: helvetica;
+        margin: 8px;
+      }
+
+      .footer-menu a {
+        display: flex;
+        text-align: center;
+        font-size: 5px;
+        padding: 5px;
+      }
+
+    }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <div class="inner-header">
+      <img class="header-image" src="https://i.imgur.com/j8dFWez.jpg"/>
+      <h1 class="header-heading">My Personal Blog</h1>
+    </div>
+  </header>
+  <nav class="navbar">
+    <ul class="nav-menu">
+      <li><a href="#">Home</a></li>
+      <li><a href="#about-me">About Me</a></li>
+      <li><a href="#interests">My Interests</a></li>
+      <li><a href="#favourites">Favourites</a></li>
+      <li><a href="#footer">Contact Me</a></li>
+    </ul>
+  </nav>
+  <main class="main-content">
+  <section class="content-container">
+    <section class="content-section" id="about-me">
+    <h1>About Me</h1>
+      <div class="card-container">
+        <div class="image-card">
+          <a href="#">
+          <img src="https://i.imgur.com/BphndHX.jpg">
+            <div>
+              <p>I'm from South Africa</p>
+              <hr>
+              <p><em>The Rainbow Nation</em></p>
+              </div>
+          </a>
+        </div>
+        <div class="image-card">
+          <a href="#">
+          <img src="https://i.imgur.com/scGgb5s.jpg">
+            <div>
+              <p>I'm 19 years old</p>
+              <hr>
+              <p><em>But I already feel old</em></p>
+            </div>
+          </a>
+        </div>
+        <div class="image-card">
+          <a href="#">
+          <img src="https://i.imgur.com/pEqIS0Y.jpg">
+            <div>
+              <p>I'm an introvert...I think</p>
+              <hr>
+              <p><em>I might be an ambivert</em></p>
+            </div>
+          </a>
+        </div>
+      </div>
+    </section>
+    <section class="content-section" id="interests">
+    <h1>My Interests</h1>
+      <div class="card-container">
+        <div class="image-card">
+          <a href="#">
+          <img src="https://i.imgur.com/emIetoq.jpg">
+            <div>
+              <p>I'm really into programming</p>
+              <hr>
+              <p><em>But I'm no master. Not yet anyway</em></p>
+            </div>
+          </a>
+        </div>
+        <div class="image-card">
+          <a href="#">
+          <img src="https://i.imgur.com/hay3ATf.png">
+            <div>
+              <p>I love jazz music</p>
+              <hr>
+              <p><em>Especially scat and swing</em></p>
+            </div>
+          </a>
+        </div>
+        <div class="image-card">
+          <a href="#">
+          <img src="https://i.imgur.com/ohkZo5U.jpg">
+            <div>
+              <p>I'm a big fan of Marvel Comics and the MCU</p>
+              <hr>
+              <p><em>I've always loved the superhero genre</em></p>
+            </div>
+          </a>
+        </div>
+        <div class="image-card">
+          <a href="#">
+          <img src="https://i.imgur.com/2uo4Qkk.jpg">
+            <div>
+              <p>I'm an Arsenal fan</p>
+              <hr>
+              <p><em>You can see why I put this fourth</em></p>
+            </div>
+          </a>
+        </div>
+      </div>
+    </section>
+    <section class="content-section" id="favourites">
+    <h1>Favourites</h1>
+      <div class="card-container">
+        <div class="image-card">
+          <a href="#">
+          <img src="https://i.imgur.com/5SwgzAe.jpg">
+            <div>
+              <p>Favourite Singer -- Frank Sinatra</p>
+              <hr>
+              <p><em>Nothing but the best</em></p>
+            </div>
+          </a>
+        </div>
+        <div class="image-card">
+          <a href="#">
+          <img src="https://i.imgur.com/gWufPvC.jpg">
+            <div>
+              <p>Favourite Movie -- The Lion King</p>
+              <hr>
+              <p><em>Hakuna Matata!</em></p>
+            </div>
+          </a>
+        </div>
+        <div class="image-card">
+          <a href="#">
+          <img src="https://i.imgur.com/nDasqcc.png">
+            <div>
+              <p>Favourite Food -- Rice & Chicken</p>
+              <hr>
+              <p><em>Hmmmm</em></p>
+            </div>
+          </a>
+        </div>
+      </div>
+    </section>
+  </section>
+  </main>
+  <footer id="footer" class="content-section">
+   <ul class="footer-menu">
+    <li><h1>Contact Me</h1></li>
+    <li><a href="#">Email: gmail@bheki.com</a></li>
+    <li><a href="#">Mobile: 0123456789</a></li>
+    <li><a href="#">Tel: 0987654321</a></li>
+    <li><a href="#">Fax: 0149162536</a></li>
+    <li><a href="#">Address: 177A Bleecker Street, New York City</a></li>
+   </ul>
+  </footer>
+</body>
