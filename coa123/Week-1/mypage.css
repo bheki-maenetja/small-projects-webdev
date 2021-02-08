@@ -43,8 +43,9 @@
 }
 
 .main-info .profile-image {
-    max-height: 175px;
-    max-width: 175px;
+    max-height: 200px;
+    max-width: 200px;
+    margin: 10px 0 10px 0;
     border-radius: 100%;
 }
 
@@ -105,6 +106,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    padding: 10px 0 10px 0;
     background-color: navy;
     color: white;
 }
