@@ -27,6 +27,7 @@
     border: 8px solid orange;
     border-radius: 0 50px 0 50px;
     padding: 10px;
+    box-shadow: 0px 0px 20px 10px black;
 }
 
 .cv-section > * {
@@ -42,7 +43,10 @@
     justify-content: space-evenly;
     padding: 0 30px 0 30px;
     border-radius: 0 45px 0 0;
-    border: 5px solid blue;
+    border-top: 10px solid cyan;
+    border-left: 10px solid cyan;
+    border-right: 10px solid cyan;
+    border-bottom: 2px solid navy;
     background-color: dodgerblue;
     color: white;
 }
@@ -56,6 +60,10 @@
     max-height: 200px;
     max-width: 200px;
     margin: 10px 0 10px 0;
+    border-top: 5px solid cyan;
+    border-left: 5px solid magenta;
+    border-right: 5px solid yellow;
+    border-bottom: 5px solid lime;
     border-radius: 100%;
     flex-grow: 0;
 }
@@ -115,17 +123,23 @@
 #experience {
     background-color: orangered;
     color:yellow;
-    border: 5px solid yellow;
+    border-left: 10px solid yellow;
+    border-right: 10px solid yellow;
 }
 
 #education {
     background-color: lime;
-    color: yellow;
+    color: darkgreen;
+    border-left: 10px solid green;
+    border-right: 10px solid green;
 }
 
 #special-skills {
-    background-color: dodgerblue;
-    color: white;
+    background-color: pink;
+    color: purple;
+    border-left: 10px solid magenta;
+    border-right: 10px solid magenta;
+    border-bottom: 0px;
 }
 
 /* CV Footer */
@@ -134,7 +148,11 @@
     justify-content: center;
     align-items: center;
     padding: 10px 0 10px 0;
-    background-color: navy;
-    color: white;
+    background-color: white;
+    color: black;
+    border-top: 5px solid black;
+    border-right: 10px solid black;
+    border-left: 10px solid black;
+    border-bottom: 5px solid black;
     border-radius: 0 0 0 50px;
 }
