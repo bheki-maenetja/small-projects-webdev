@@ -20,11 +20,15 @@
 /* CV Section */
 .cv-section {
     width: 60%;
-    max-height: 90%;
+    max-height: 100%;
     display: flex;
     flex-direction: column;
     opacity: 0.9;
-    border: 8px solid orange;
+    border-top: 8px solid cyan;
+    border-right: 8px solid yellow;
+    border-bottom: 8px solid lime;
+    border-left: 8px solid magenta;
+    animation: changeCVBorder 0.4s infinite alternate-reverse;
     border-radius: 0 50px 0 50px;
     padding: 10px;
     box-shadow: 0px 0px 20px 10px black;
@@ -43,12 +47,8 @@
     justify-content: space-evenly;
     padding: 0 30px 0 30px;
     border-radius: 0 45px 0 0;
-    border-top: 10px solid cyan;
-    border-left: 10px solid cyan;
-    border-right: 10px solid cyan;
     border-bottom: 2px solid navy;
-    background-color: dodgerblue;
-    color: white;
+    animation: changeMainInfo 1.5s infinite alternate-reverse;
 }
 
 .main-info > * {
@@ -57,15 +57,12 @@
 }
 
 .main-info .profile-image {
-    max-height: 200px;
-    max-width: 200px;
+    max-height: 160px;
+    max-width: 160px;
     margin: 10px 0 10px 0;
-    border-top: 5px solid cyan;
-    border-left: 5px solid magenta;
-    border-right: 5px solid yellow;
-    border-bottom: 5px solid lime;
     border-radius: 100%;
     flex-grow: 0;
+    animation: changeProfilePic 1.5s infinite alternate-reverse;
 }
 
 .name-and-title {
@@ -121,25 +118,16 @@
 }
 
 #experience {
-    background-color: orangered;
-    color:yellow;
-    border-left: 10px solid yellow;
-    border-right: 10px solid yellow;
+    animation: changeExperience 1.5s infinite alternate;
 }
 
 #education {
-    background-color: lime;
-    color: darkgreen;
-    border-left: 10px solid green;
-    border-right: 10px solid green;
+    animation: changeEducation 1.5s infinite alternate-reverse;
 }
 
 #special-skills {
-    background-color: pink;
-    color: purple;
-    border-left: 10px solid magenta;
-    border-right: 10px solid magenta;
     border-bottom: 0px;
+    animation: changeSkills 1.5s infinite alternate;
 }
 
 /* CV Footer */
@@ -155,4 +143,139 @@
     border-left: 10px solid black;
     border-bottom: 5px solid black;
     border-radius: 0 0 0 50px;
+}
+
+/* Animations */
+@keyframes changeName {
+    from {font-size: 25px;}
+    to {font-size: 45px;}
+}
+
+@keyframes changeTitle {
+    from {font-size: 10px;}
+    to {font-size: 20px;}
+}
+
+@keyframes changeExperience {
+    from {
+        background-color: orangered;
+        color: yellow;
+        border-left: 10px solid yellow;
+        border-right: 10px solid yellow;
+    }
+
+    to {
+        background-color: yellow;
+        color: orangered;
+        border-left: 10px solid orangered;
+        border-right: 10px solid orangered;
+    }
+}
+
+
+@keyframes changeEducation {
+    from {
+        background-color: lime;
+        color: darkgreen;
+        border-left: 10px solid green;
+        border-right: 10px solid green;
+    }
+
+    to {
+        background-color: darkgreen;
+        color: lime;
+        border-left: 10px solid lime;
+        border-right: 10px solid lime;
+    }
+}
+
+@keyframes changeSkills {
+    from {
+        background-color: pink;
+        color: purple;
+        border-left: 10px solid magenta;
+        border-right: 10px solid magenta;
+    }
+
+    to {
+        background-color: purple;
+        color: pink;
+        border-left: 10px solid pink;
+        border-right: 10px solid pink;
+    }
+}
+
+@keyframes changeMainInfo {
+    from {
+        border-top: 10px solid cyan;
+        border-left: 10px solid cyan;
+        border-right: 10px solid cyan;
+        background-color: navy;
+        color: cyan;
+    }
+
+    to {
+        border-top: 10px solid blue;
+        border-left: 10px solid blue;
+        border-right: 10px solid blue;
+        background-color: cyan;
+        color: navy;
+    }
+}
+
+@keyframes changeCVBorder {
+    0% {
+        border-top: 8px solid cyan;
+        border-right: 8px solid yellow;
+        border-bottom: 8px solid lime;
+        border-left: 8px solid magenta;
+    }
+
+    25% {
+        border-top: 10px solid magenta;
+        border-right: 10px solid cyan;
+        border-bottom: 10px solid yellow;
+        border-left: 10px solid lime;
+        padding: 12px
+    }
+
+    50% {
+        border-top: 12px solid lime;
+        border-right: 12px solid magenta;
+        border-bottom: 12px solid cyan;
+        border-left: 12px solid yellow;
+        padding: 14px;
+    }
+
+    100% {
+        border-top: 14px solid yellow;
+        border-right: 14px solid lime;
+        border-bottom: 14px solid magenta;
+        border-left: 14px solid cyan;
+        padding: 16px;
+    }
+}
+
+@keyframes changeProfilePic {
+    from {
+        border: 10px solid cyan;
+    }
+
+    to {
+        border: 10px solid blue;
+    }
+}
+
+.name-and-title > h2  {
+    animation-name: changeName;
+    animation-duration: 1.5s;
+    animation-direction: alternate;
+    animation-iteration-count: infinite;
+}
+
+.name-and-title > h3  {
+    animation-name: changeTitle;
+    animation-duration: 1.5s;
+    animation-direction: alternate;
+    animation-iteration-count: infinite;
 }
