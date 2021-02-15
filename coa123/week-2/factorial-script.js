@@ -13,3 +13,5 @@ function factorialCalc() {
   // end of Task
   alert(result)
 }
+
+factorialCalc()
