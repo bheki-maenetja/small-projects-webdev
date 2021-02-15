@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<title>Scope of Variables</title>
+</head>
+
+<body>
+<h2>Using variables with different scopes</h2>
+ 
+<script>
+let num1 = 10;    
+function  funcA() {
+  if (typeof num1 === 'number') {
+	num1 = num1 + 5;
+  }
+  alert("num1: " + num1);
+  let num2 = 20;
+  alert("num2: " + num2);
+  if (num1 > 10) {
+	let num3 = 100; 
+  }
+  alert("num3: " + num3);
+}
+
+function  funcB() {     
+  alert("num1: " + num1);
+}
+
+funcA();
+funcB(); 
+
+</script>
+</body>
+</html>
