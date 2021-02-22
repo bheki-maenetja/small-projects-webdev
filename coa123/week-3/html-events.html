@@ -9,7 +9,7 @@
 
 <!-- Task 1: Add a proper HTML event attribute to the firstP paragraph which will be called when the mouse is moving over the paragraph, and to react to this event call changeParagraph function -->
 
-<p id="firstP">The color of this paragraph will be changed when the mouse moving over it.</p>
+<p id="firstP" onmouseover="changeParagraph()">The color of this paragraph will be changed when the mouse moving over it.</p>
 <p>The second paragraph.</p>
 <h2>List of your favourite movies:<h2>
 <div id="movieList"></div>
@@ -20,7 +20,7 @@ function changeParagraph() {
  document.getElementById("firstP").style.color = "red";
  /* Task 2: In addition to changing the paragraph's color, on the same event, 
  we want to change the content of the second paragraph to "The content is changed!". To access this paragraph use getElementsByTagName */
-
+    document.querySelector("p:not(#firstP)").innerHTML = "The content has changed!";
  
 }
 
@@ -28,7 +28,13 @@ function loadData(){
  var inputData = prompt("Enetr three of your favourite movies seperated by comma");
  var movieArray = inputData.split(',');
  /* Task 3: Add the elements of movieArray as an unordered bulleted HTML list inside "movieList" div  */
- 
+ newUl = document.createElement("ul")
+ movieArray.forEach(item => {
+    newli = document.createElement("li")
+    newli.innerHTML = `<li>${item}</li>`
+    newUl.appendChild(newli)
+ })
+ document.body.appendChild(newUl);
  
  
  
