@@ -17,11 +17,16 @@ function loadData() {
    /*
    Task 1. Convert the JSON value of the text input to a JavaScript object, and add the property values of that object as an unordered bulleted HTML list inside "objectContainer" div. Then set the value of the input text to blank.
    */
-   
+    myObj = JSON.parse(document.querySelector("#jsonInput").value);
+    console.log(myObj);
+    myUl = document.createElement("ul");
+    for (var key in myObj) {
+        myLi = document.createElement("li");
+        myLi.innerHTML = `${key}: ${myObj[key]}`;
+        myUl.appendChild(myLi);
+    }
 
-
-
-   
+    document.body.appendChild(myUl);
 }
 
 </script>
