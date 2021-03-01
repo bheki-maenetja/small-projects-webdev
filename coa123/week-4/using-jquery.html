@@ -7,19 +7,27 @@
 <script>
 $(document).ready(function(){
 /* Task 1: Using JQuery, add click event to "changeColorBtn" button which changes the background color of "detail" div to yellow ehrn the user clicks the button. */
-
+$("#changeColorBtn").click(() => {
+    $("div").css({ backgroundColor: "yellow" })
+})
 
 
 
 /* Task 2: Using JQuery mouseover and mouseout methods, change the font color of each <p> element in "detail" div to red when the mouse pointer enters the element, and change it back to black when the mouse pointer leaves the element    */
-
+$("div > p").hover(() => {
+    $("div > p").css("color", "red");
+}, () => {
+    $("div > p").css("color", "black")
+})
 
 
 
 /* Task 3: Using JQuery toggle method, hide/show "detail" div when the user clicks the h3 element. The content of h3 needs to be changed to "::See More::" when "detail" div is hidden (You can specify the speed of the hide/show effect) */
+$("h3").click(() => {
+    $("div").toggle()
+})
 
-
-
+})
 </script>
 
 </head>
