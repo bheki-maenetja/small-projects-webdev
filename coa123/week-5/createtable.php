@@ -56,7 +56,18 @@ td:hover{
 <table class="table">
 <th class="head">Heading 1</th><th class="head">Heading 2</th><th class="head">Heading 3</th>
 <?php
-
+for ($x = 1; $x < 11; $x++) {
+    echo "<tr>";
+    for ($i = 1; $i < 4; $i++) {
+        $themod = $i % 3;
+        if ($themod == 2) {
+            echo "<td class='cell2'>$x</td>";
+        } else {
+            echo "<td class='cell1'>$x</td>";
+        }
+    }
+    echo "</tr>";
+}
 ?>
 
 </table>

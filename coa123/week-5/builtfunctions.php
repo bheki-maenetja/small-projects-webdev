@@ -16,9 +16,9 @@ Built-in Functions
 <p>
 <!-- Task 2: If the length of $messgae is greater than 20, display the value of $message in uppercase letters using echo  -->
 <?php
- if (strlen($message) > 20) {
-     echo strtoupper($message);
- }
+if (strlen($message) > 20) {
+    echo strtoupper($message);
+}
 ?>
 </p>
 
@@ -42,7 +42,7 @@ function getFact($num) {
         return $num * getFact($num - 1);
     }
 }
- 
+
 ?>
 
 <!-- Task5: Call fact function by passing $num to it and diplay its result in the paragraph below: -->
