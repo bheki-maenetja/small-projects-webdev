@@ -78,12 +78,17 @@ for ($x = 1; $x < 11; $x++) {
 <table class="table">
 <?php
 $NumRows=10;
-for($i=1;$i<=$NumRows;$i++){
-	echo '<tr>';
-		
-    		echo '<td class="cell1">'.$i.'</td>';
-
-	echo '</tr>';
+for($x=1;$x<=$NumRows;$x++){
+	echo "<tr>";
+    for ($i = 1; $i < 11; $i++) {
+        $theproduct = $x * $i;
+        if ($x == 1 || $i == 1) {
+            echo "<td class='cell1'>$theproduct</td>";
+        } else {
+            echo "<td class='cell2'>$theproduct</td>";
+        }
+    }
+    echo "</tr>";
 }
 ?>
 </table>
