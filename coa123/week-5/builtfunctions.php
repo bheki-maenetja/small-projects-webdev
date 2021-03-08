@@ -12,7 +12,7 @@ Built-in Functions
 
 <body>
 <!-- Task 1: Use php function date() to get the date and display the date using echo. -->
-<h2>Today date is: <?php    ?></h2>
+<h2>Today date is: <?php echo date("Y-m-d")  ?></h2>
 <p>
 <!-- Task 2: If the length of $messgae is greater than 20, display the value of $message in uppercase letters using echo  -->
 <?php

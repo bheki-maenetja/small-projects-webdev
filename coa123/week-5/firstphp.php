@@ -26,8 +26,8 @@ body{
 <ul>
 <!-- Task 4: Using foreach statement in PHP, try to create an HTML list here based on $studentList. Each item of the list should present one student as follows: "Student ID is: ... and student name is: ..." -->
 <?php 
-foreach ($studentList as $value) {
-    echo "<li>$value</li>";
+foreach ($studentList as $id => $name) {
+    echo "<li>Student: $name ($id)</li>";
 }
 ?>
 </ul>
