@@ -43,10 +43,12 @@ input[type=submit]:hover {
 
 </style>
 <script>
-function validateEmails() {
+function validateEmails(e) {
 	/* Task 3: Check if the value of email and confirm email inputs are the same. If they are not, the form cannot be submitted. */
-	 
-	 
+	ogEmail = document.querySelector('#email')
+	cEmail = document.querySelector('#cemail')
+
+    return ogEmail === cEmail
 	 
 }
 </script>
