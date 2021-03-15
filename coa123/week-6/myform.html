@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+body {font-family: Arial, Helvetica, sans-serif;}
+
+
+
+input[type=text], input[type=email], input[type=number], select{
+
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin-top: 6px;
+  margin-bottom: 16px;
+}
+
+
+input[type=submit] {
+  background-color: #1943DD;
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+input[type=submit]:hover {
+  background-color: #0A1B5D;
+  color:#E0BF1B;
+  
+}
+
+.main {
+  border-radius: 5px;
+  background-color: #f2f2f2;
+  padding: 20px;
+  display: inline-block;
+  border: black 1px solid;
+}
+
+
+</style>
+<script>
+function validateEmails() {
+	/* Task 3: Check if the value of email and confirm email inputs are the same. If they are not, the form cannot be submitted. */
+	 
+	 
+	 
+}
+</script>
+
+</head>
+<body>
+<div class="main">
+<form action="result.php" onsubmit="return validateEmails()" method="get">
+  <label for="firstname">First name:</label><br>
+  <!--Task 1: Add a text field to get user first name. This field is a required field, and must conain only letters. The number of letters must be 2 or more --> 
+  
+  
+  
+  <br>
+  <label for="lastname">Last name:</label><br>
+  <input type="text" id="lastname" name="lastname"><br>
+   <label for="color">Choose Color</label><br>
+    <select id="color" name="backgroundcolor">
+      <option value="#FF0000">Red Background</option>
+      <option value="#FFFF00">Yellow Background</option>
+      <option value="#FFFFFF">White Background</option>
+    </select><br>	
+  <label for="tablesize">Size of table to be generated (between 2 and 6)</label><br>
+  <!--Task 2: Add a field for entering a number between 2 and 6. The default value of this field is 2.  --> 
+  
+  
+  <br>  
+  <label for="email">Email:</label><br>
+  <input type="email" id="email" name="email"><br>
+  <label for="cemail">Confirm Email:</label><br>
+  <input type="email" id="cemail" name="confirmemail"><br>
+  <br><br>
+  <input type="submit" name="submit" value="submit">
+</form> 
+</div>
+</body>
+</html>
