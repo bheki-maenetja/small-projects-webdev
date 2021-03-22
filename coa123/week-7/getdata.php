@@ -34,24 +34,24 @@ if (!$conn) {
 $table_country="venue";
 
 //Task2. Search venues with capacity more than 280 and sort the result-set by "name", and save the result-set in $result
-$venue_search = "SELECT * venue WHERE capacity > 280";
+$venue_search = "SELECT * FROM venue WHERE capacity > 280";
 $result_set = mysqli_query($conn, $venue_search);
 
 
 
 //Task3.echo the SQL search string and total number of search results
 echo $venue_search . "<br>";
-echo mysqli_num_rows($result_set) . "<br>";
+echo $result_set->num_rows . "<br>";
 
 
 
 
 //Task4. Display venue_id, name, capacity anf weekday_price of each venues in the result-set using mysqli_fetch_array 
-// if (mysqli_num_rows($result_set) > 0){
-//     while ($row = mysqli_fetch_array($result_set)){
-//         echo $row[3] . "  " . $row[2] . "<br>";
-//     }
-// }
+if (mysqli_num_rows($result_set) > 0){
+    while ($row = mysqli_fetch_array($result_set)){
+        echo $row["venue_id"] . " " . $row["name"] . " " . $row["capacity"] . " " . $row["weekday_price"] . "<br>";
+    }
+}
 
 
 
