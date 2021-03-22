@@ -61,14 +61,21 @@ if (mysqli_num_rows($result_set) > 0){
 echo "<hr>";
 echo "<div id='jsonDiv'>" ; 
 //Task5. display all query results in JSON style using json_encode  
+$allDataArray = array();
+$new_results = mysqli_query($conn, $venue_search);
+if (mysqli_num_rows($new_results) > 0) {
+    while ($row = mysqli_fetch_array($new_results, MYSQLI_ASSOC)) {
+        array_push($allDataArray, $row);
+    }
+}
+echo json_encode($allDataArray);
 
 
 
 
 
 
-
-
+mysqli_close($conn);
 /////end of Task5/////	
 echo "</div>";  
 ?>
