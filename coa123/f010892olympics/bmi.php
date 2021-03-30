@@ -46,7 +46,11 @@
         return TRUE;
     }
 
-    function generateTable(int $minWeight, int $maxWeight, int $minHeight, int $maxHeight) {
+    if (validateInputs()) {
+        generateTable($values['minWeight'], $values['maxWeight'], $values['minHeight'], $values['maxHeight']);
+    }
+
+    function generateTable($minWeight, $maxWeight, $minHeight, $maxHeight) {
         echo "<table>";
         for ($w=$minWeight-5; $w<=$maxWeight; $w=$w+5) {
             echo '<tr>';
@@ -62,7 +66,7 @@
                 } else if ($h < $minHeight) {
                     echo '<td>' . $w . '</td>';
                 } else {
-                    echo '<td>' . $w . " + " . $h . '</td>';
+                    echo '<td>' . getBmi($w, $h) . '</td>';
                 }
             }
             echo '</tr>';
@@ -70,7 +74,13 @@
         echo "</table>";
     }
 
-    // generateTable($minWeight, $maxWeight, $minHeight, $maxHeight);
+    function getBmi($weight, $height) {
+        if ($height == 0) {
+            return 'N/a';
+        }
+        $bmi = (float) ($weight / pow($height / 100, 2));
+        return round($bmi, 3);
+    }
 
 ?>
 </body>
