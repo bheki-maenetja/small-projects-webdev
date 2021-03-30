@@ -23,10 +23,18 @@
     echo 'Min & Max Heights: ' . $minHeight . " " . $maxHeight;
 
     echo "<table>";
-    for ($i=$minWeight; $i<=$maxWeight; $i=$i+5) {
+    for ($w=$minWeight-5; $w<=$maxWeight; $w=$w+5) {
         echo '<tr>';
-        for ($j=$minHeight; $j<=$maxHeight; $j=$j+5) {
-            echo '<td>' . $i . " + " . $j;
+        for ($h=$minHeight-5; $h<=$maxHeight; $h=$h+5) {
+            if ($w < $minWeight && $h < $minHeight) {
+                echo '<td>' . 'Column 0 - \nRow 0' . '</td>';
+            } else if ($w < $minWeight) {
+                echo '<td>' . $h . '</td>';
+            } else if ($h < $minHeight) {
+                echo '<td>' . $w . '</td>';
+            } else {
+                echo '<td>' . $w . " + " . $h . '</td>';
+            }
         }
         echo '</tr>';
     }
