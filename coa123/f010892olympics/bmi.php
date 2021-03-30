@@ -21,24 +21,46 @@
     echo '<h1>THIS IS WEB DEVELOPMENT</h1>';
     echo 'Min & Max Weights: ' . $minWeight . " " . $maxWeight;
     echo 'Min & Max Heights: ' . $minHeight . " " . $maxHeight;
+    
+    validateInputs();
 
-    echo "<table>";
-    for ($w=$minWeight-5; $w<=$maxWeight; $w=$w+5) {
-        echo '<tr>';
-        for ($h=$minHeight-5; $h<=$maxHeight; $h=$h+5) {
-            if ($w < $minWeight && $h < $minHeight) {
-                echo '<td>' . 'Column 0 - \nRow 0' . '</td>';
-            } else if ($w < $minWeight) {
-                echo '<td>' . $h . '</td>';
-            } else if ($h < $minHeight) {
-                echo '<td>' . $w . '</td>';
-            } else {
-                echo '<td>' . $w . " + " . $h . '</td>';
+    function validateInputs() {
+        global $minWeight, $maxWeight, $minHeight, $maxHeight;
+        $values = array($minWeight, $maxWeight, $minHeight, $maxHeight);
+
+        foreach ($values as $value) {
+            if (!is_numeric(trim($value))) {
+                echo '<h2>Error - One or more of your values is invalid</h2>';
+                return FALSE;
             }
         }
-        echo '</tr>';
     }
-    echo "</table>";
+
+    function generateTable(int $minWeight, int $maxWeight, int $minHeight, int $maxHeight) {
+        echo "<table>";
+        for ($w=$minWeight-5; $w<=$maxWeight; $w=$w+5) {
+            echo '<tr>';
+            for ($h=$minHeight-5; $h<=$maxHeight; $h=$h+5) {
+                if ($w < $minWeight && $h < $minHeight) {
+                    echo '<td>'; 
+                    echo 'Column 0 -';
+                    echo '<br>';
+                    echo '\nRow 0'; 
+                    echo '</td>';
+                } else if ($w < $minWeight) {
+                    echo '<td>' . $h . '</td>';
+                } else if ($h < $minHeight) {
+                    echo '<td>' . $w . '</td>';
+                } else {
+                    echo '<td>' . $w . " + " . $h . '</td>';
+                }
+            }
+            echo '</tr>';
+        }
+        echo "</table>";
+    }
+
+    // generateTable($minWeight, $maxWeight, $minHeight, $maxHeight);
 
 ?>
 </body>
