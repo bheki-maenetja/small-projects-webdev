@@ -14,26 +14,36 @@
 </style>
 <body>
 <?php
-    $minWeight = $_REQUEST['min_weight'];
-    $maxWeight = $_REQUEST['max_weight'];
-    $minHeight = $_REQUEST['min_height'];
-    $maxHeight = $_REQUEST['max_height'];
-    echo '<h1>THIS IS WEB DEVELOPMENT</h1>';
-    echo 'Min & Max Weights: ' . $minWeight . " " . $maxWeight;
-    echo 'Min & Max Heights: ' . $minHeight . " " . $maxHeight;
+    $values = array(
+        "minWeight"=>$_REQUEST['min_weight'], 
+        "maxWeight"=>$_REQUEST['max_weight'], 
+        "minHeight"=>$_REQUEST['min_height'], 
+        "maxHeight"=>$_REQUEST['max_height']
+    );
+    echo '<h1>THIS IS WEB DEVELOPMENT!!!</h1>';
+    echo 'Min & Max Weights: ' . $values['minWeight'] . " " . $values['maxWeight'];
+    echo 'Min & Max Heights: ' . $values['minHeight'] . " " . $values['maxHeight'];
     
     validateInputs();
-
     function validateInputs() {
-        global $minWeight, $maxWeight, $minHeight, $maxHeight;
-        $values = array($minWeight, $maxWeight, $minHeight, $maxHeight);
+        global $values;
 
-        foreach ($values as $value) {
+        foreach ($values as $key => $value) {
             if (!is_numeric(trim($value))) {
                 echo '<h2>Error - One or more of your values is invalid</h2>';
                 return FALSE;
             }
+            $values[$key] = (int) $value;
         }
+
+        if ($values['maxWeight'] < $values['minWeight']) {
+            echo '<h2>Error - The maximum weight is less than the minimum weight</h2>';
+            if ($values['maxHeight'] < $values['minHeight']) {
+                echo '<h2>Error - The maximum height is less than the minimum height</h2>';
+            }
+            return FALSE;
+        }
+        return TRUE;
     }
 
     function generateTable(int $minWeight, int $maxWeight, int $minHeight, int $maxHeight) {
