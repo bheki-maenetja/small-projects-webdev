@@ -24,13 +24,16 @@
     echo 'Min & Max Weights: ' . $values['minWeight'] . " " . $values['maxWeight'];
     echo 'Min & Max Heights: ' . $values['minHeight'] . " " . $values['maxHeight'];
     
-    validateInputs();
+    $inputsValid = validateInputs();
     function validateInputs() {
         global $values;
 
         foreach ($values as $key => $value) {
             if (!is_numeric(trim($value))) {
                 echo '<h2>Error - One or more of your values is invalid</h2>';
+                return FALSE;
+            } else if ((int) $value < 0) {
+                echo '<h2>Error - One or more of your values is less than zero</h2>';
                 return FALSE;
             }
             $values[$key] = (int) $value;
@@ -46,7 +49,7 @@
         return TRUE;
     }
 
-    if (validateInputs()) {
+    if ($inputsValid) {
         generateTable($values['minWeight'], $values['maxWeight'], $values['minHeight'], $values['maxHeight']);
     }
 
