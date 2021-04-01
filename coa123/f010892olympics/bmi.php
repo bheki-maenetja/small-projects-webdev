@@ -10,34 +10,65 @@
     * {
         box-sizing: border-box;
         margin: 0;
+        font-family: helvetica;
     }
 
     body {
         width: 100vw;
         height: 100vh;
-        background-color: dodgerblue;
+        background-color: #d4dddd;
+        display: flex;
+        justify-content: center;
+        align-items: center;
     }
 
     .table-container {
         max-width: 80%;
         max-height: 90%;
-        padding: 50px;
-        margin: auto auto;
+        margin: 100px auto;
         overflow: scroll;
         display: flex;
         justify-content: flex-start;
         align-items: flex-start;
-        background-color: deepskyblue;
+        box-shadow: 0 0 20px 5px black;
     }
 
     table, th, td {
-        border: 1px solid blue;
+        border: 1px solid black;
         border-collapse: collapse;
     }
 
+    td, th {
+        padding: 10px;
+        text-align: center;
+    }
+
+    .row-heading {
+        position: sticky;
+        background-color: #d4dddd;
+        color: #4a4a4a;
+        left: 0;
+    }
+    .column-heading {
+        position: sticky;
+        background-color: #4a4a4a;
+        color: white;
+        top: 0;
+    }
+
+    .column-heading:first-child {
+        background-color: #e3120b;
+        color: #fafafa;
+        padding: 20px;
+    }
+
+    td {
+        background-color: #acc8d4;
+    }
+
+
     table {
-        width: 80%;
-        min-height: 40%;
+        height: 100%;
     }
 </style>
 <body>
@@ -85,15 +116,15 @@
             echo '<tr>';
             for ($h=$minHeight-5; $h<=$maxHeight; $h=$h+5) {
                 if ($w < $minWeight && $h < $minHeight) {
-                    echo '<td>'; 
+                    echo "<th class='column-heading'>"; 
                     echo 'Height (cm) →';
                     echo '<br>';
                     echo 'Weight (kg) ↓'; 
-                    echo '</td>';
+                    echo "</th>";
                 } else if ($w < $minWeight) {
-                    echo '<td>' . $h . '</td>';
+                    echo "<th class='column-heading'>" . $h . "</th>";
                 } else if ($h < $minHeight) {
-                    echo '<td>' . $w . '</td>';
+                    echo "<th class='row-heading'>" . $w . "</th>";
                 } else {
                     echo '<td>' . getBmi($w, $h) . '</td>';
                 }
