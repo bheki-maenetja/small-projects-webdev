@@ -7,9 +7,37 @@
     <title>Document</title>
 </head>
 <style>
+    * {
+        box-sizing: border-box;
+        margin: 0;
+    }
+
+    body {
+        width: 100vw;
+        height: 100vh;
+        background-color: dodgerblue;
+    }
+
+    .table-container {
+        max-width: 80%;
+        max-height: 90%;
+        padding: 50px;
+        margin: auto auto;
+        overflow: scroll;
+        display: flex;
+        justify-content: flex-start;
+        align-items: flex-start;
+        background-color: deepskyblue;
+    }
+
     table, th, td {
         border: 1px solid blue;
         border-collapse: collapse;
+    }
+
+    table {
+        width: 80%;
+        min-height: 40%;
     }
 </style>
 <body>
@@ -20,9 +48,6 @@
         "minHeight"=>$_REQUEST['min_height'], 
         "maxHeight"=>$_REQUEST['max_height']
     );
-    echo '<h1>THIS IS WEB DEVELOPMENT!!!</h1>';
-    echo 'Min & Max Weights: ' . $values['minWeight'] . " " . $values['maxWeight'];
-    echo 'Min & Max Heights: ' . $values['minHeight'] . " " . $values['maxHeight'];
     
     $inputsValid = validateInputs();
     function validateInputs() {
@@ -54,15 +79,16 @@
     }
 
     function generateTable($minWeight, $maxWeight, $minHeight, $maxHeight) {
+        echo "<div class='table-container'>";
         echo "<table>";
         for ($w=$minWeight-5; $w<=$maxWeight; $w=$w+5) {
             echo '<tr>';
             for ($h=$minHeight-5; $h<=$maxHeight; $h=$h+5) {
                 if ($w < $minWeight && $h < $minHeight) {
                     echo '<td>'; 
-                    echo 'Column 0 -';
+                    echo 'Height (cm) →';
                     echo '<br>';
-                    echo '\nRow 0'; 
+                    echo 'Weight (kg) ↓'; 
                     echo '</td>';
                 } else if ($w < $minWeight) {
                     echo '<td>' . $h . '</td>';
@@ -75,6 +101,7 @@
             echo '</tr>';
         }
         echo "</table>";
+        echo "</div>";
     }
 
     function getBmi($weight, $height) {
