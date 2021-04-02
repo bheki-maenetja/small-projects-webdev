@@ -74,7 +74,7 @@
         die("Connection failed: " . mysqli_connect_error());
     }
 
-    $db_query = "SELECT name, gender, weight / POWER(height/100,2) as BMI from Cyclist WHERE name LIKE '%$part_name%' and ISO_id='$ISO_id'";
+    $db_query = generateQuery();
 
     $search_result = mysqli_query($conn, $db_query);
 
@@ -89,17 +89,33 @@
         echo "<tr>";
         echo "<th class='column-heading'>Name</th>";
         echo "<th class='column-heading'>Gender</th>";
+        echo "<th class='column-heading'>ISO</th>";
         echo "<th class='column-heading'>BMI</th>";
         echo "</tr>";
         while ($row = mysqli_fetch_array($search_result)){
             echo "<tr>";
             echo "<td>" . $row['name'] . "</td>"; 
             echo "<td>" . $row['gender'] . "</td>";
+            echo "<td>" . $row['ISO_id'] . "</td>";
             echo "<td>" . $row['BMI'] . "</td>";
             echo "</tr>";
         }
         echo "</table>";
         echo "</div>";
+    }
+
+    function generateQuery() {
+        global $ISO_id, $part_name;
+        $base_query = "SELECT name, gender, ISO_id, ROUND(weight / POWER(height/100,2), 3) as BMI from Cyclist";
+        if (trim($ISO_id) == "" && trim($part_name) == "") {
+            return $base_query;
+        } else if (trim($ISO_id) == "") {
+            return $base_query . " WHERE name LIKE '%$part_name%'";
+        } else if (trim($part_name) == "") {
+            return $base_query . " WHERE ISO_id='$ISO_id'";
+        } else {
+            return $base_query . " WHERE name LIKE '%$part_name%' and ISO_id='$ISO_id'";
+        }
     }
     mysqli_close($conn);
 ?>
