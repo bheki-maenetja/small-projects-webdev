@@ -50,6 +50,12 @@
         top: 0;
     }
 
+    .main-heading {
+        background-color: #e3120b;
+        color: #fafafa;
+        padding: 20px;
+    }
+
     td {
         background-color: #acc8d4;
     }
@@ -80,6 +86,8 @@
 
     if (mysqli_num_rows($search_result) > 0){
         generateTable();
+    } else {
+        echo "<h2>No results matching your search -- Sorry 😬</h2>";
     }
     
     function generateTable() {
@@ -87,16 +95,17 @@
         echo "<div class='table-container'>";
         echo "<table>";
         echo "<tr>";
+        echo "<th class='main-heading' colspan='4'>Olympic Athletes</th>";
+        echo "</tr>";
+        echo "<tr>";
         echo "<th class='column-heading'>Name</th>";
         echo "<th class='column-heading'>Gender</th>";
-        echo "<th class='column-heading'>ISO</th>";
         echo "<th class='column-heading'>BMI</th>";
         echo "</tr>";
         while ($row = mysqli_fetch_array($search_result)){
             echo "<tr>";
             echo "<td>" . $row['name'] . "</td>"; 
             echo "<td>" . $row['gender'] . "</td>";
-            echo "<td>" . $row['ISO_id'] . "</td>";
             echo "<td>" . $row['BMI'] . "</td>";
             echo "</tr>";
         }
@@ -106,7 +115,7 @@
 
     function generateQuery() {
         global $ISO_id, $part_name;
-        $base_query = "SELECT name, gender, ISO_id, ROUND(weight / POWER(height/100,2), 3) as BMI from Cyclist";
+        $base_query = "SELECT name, gender, ROUND(weight / POWER(height/100,2), 3) as BMI from Cyclist";
         if (trim($ISO_id) == "" && trim($part_name) == "") {
             return $base_query;
         } else if (trim($ISO_id) == "") {
