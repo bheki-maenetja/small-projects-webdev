@@ -34,7 +34,7 @@
 
     function getResults() {
         global $firstDate, $secondDate, $conn;
-        $db_query = "SELECT name, dob, country_name, gdp, population from Country join Cyclist on Country.ISO_id = Cyclist.ISO_id where dob BETWEEN '$firstDate' AND '$secondDate'";
+        $db_query = "SELECT name, country_name, gdp, population from Country join Cyclist on Country.ISO_id = Cyclist.ISO_id where dob BETWEEN '$firstDate' AND '$secondDate'";
         $search_result = mysqli_query($conn, $db_query);
         $dataArray = array();
 
