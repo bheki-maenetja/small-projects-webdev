@@ -21,8 +21,6 @@
 
     $firstDate = $_REQUEST['date_1'];
     $secondDate = $_REQUEST['date_2'];
-    echo "<h2>" . $firstDate . "</h2>";
-    echo "<h2>" . $secondDate . "</h2>";
 
     function validateDate($inputDate) {
         $dateFormat = date_create_from_format('d/m/Y', $inputDate);
@@ -36,26 +34,33 @@
 
     function getResults() {
         global $firstDate, $secondDate, $conn;
-        $db_query = "SELECT name, country_name, gdp, population from Country join Cyclist on Country.ISO_id = Cyclist.ISO_id where dob BETWEEN '$firstDate' AND '$secondDate'";
+        $db_query = "SELECT name, dob, country_name, gdp, population from Country join Cyclist on Country.ISO_id = Cyclist.ISO_id where dob BETWEEN '$firstDate' AND '$secondDate'";
         $search_result = mysqli_query($conn, $db_query);
+        $dataArray = array();
 
         if (mysqli_num_rows($search_result) > 0) {
             while ($row = mysqli_fetch_array($search_result)) {
-                echo $row['name'] . " " . $row['country_name'] . "<br>";
+                array_push($dataArray, $row);
             }
+            echo json_encode($dataArray);
+        } else {
+            echo "<h3>No results matching your search 😬</h3>";
         }
     }
 
     if (validateDate($firstDate) && validateDate($secondDate)) {
-        echo "<h2>All Good</h2>";
-        $firstDate = reformatDate($firstDate);
-        $secondDate = reformatDate($secondDate);
-        echo "<h3>" . $firstDate . "</h3>";
-        echo "<h3>" . $secondDate . "</h3>";
-        getResults();
+        if ($firstDate > $secondDate) {
+            echo "<h3>Error - The first date is later than the second date</h3>";
+        } else {
+            $firstDate = reformatDate($firstDate);
+            $secondDate = reformatDate($secondDate);
+            getResults();
+        }
     } else {
-        echo "<h2>We have a problem</h2>";
+        echo "<h3>Error - one or more dates are invalid</h3>";
     }
+
+    mysqli_close($conn);
 ?>
 </body>
 </html>
