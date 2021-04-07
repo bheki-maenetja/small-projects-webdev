@@ -8,7 +8,7 @@
 </head>
 <body>
     <?php 
-    echo "<h1>Coursework - Task 4</h1>"
+    readfile("home.html");
     ?>
 </body>
 </html>
