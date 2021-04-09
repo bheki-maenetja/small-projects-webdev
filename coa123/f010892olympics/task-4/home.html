@@ -4,15 +4,60 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="home.css">
+    <!-- <link rel="stylesheet" href="home.css"> -->
     <title>Home Page</title>
 </head>
+<style>
+    * {
+        box-sizing: border-box;
+        margin: 0;
+        font-family: helvetica;
+    }
+
+    body {
+        height: 100vh;
+        width: 100vw;
+        background-color: royalblue;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .home-btn-container {
+        min-width: 200px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: stretch;
+        padding: 30px;
+        border-radius: 20px;
+        background-color: rgba(0, 0, 0, 0.6);
+    }
+
+    .home-btn-container > h1 {
+        color: white;
+        padding-bottom: 5px;
+        border-bottom: 1px solid white;
+        text-align: center;
+    }
+
+    .home-btn {
+        width: 400px;
+        height: 100px;
+        margin: 10px 0;
+        background-color: aqua;
+        text-decoration: none;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+</style>
 <body>
     <main>
         <div class="home-btn-container">
             <h1>Olympic Comparison Tool</h1>
-            <button id="compare-btn" class="home-btn">Country Comparison</button>
-            <button id="medal-btn" class="home-btn">Medal Table</button>
+            <a id="compare-btn" class="home-btn" href="country-compare.html">Country Comparison</a>
+            <a id="medal-btn" class="home-btn" href="#">Medal Table</a>
         </div>
     </main>
 </body>
