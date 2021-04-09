@@ -2,5 +2,56 @@
     box-sizing: border-box;
     margin: 0;
     font-family: helvetica;
-    background-color: deepskyblue;
+}
+
+body {
+    height: 100vh;
+    width: 100vw;
+}
+
+main {
+    display: flex;
+    height: 100%;
+    width: 100%;
+}
+
+.compare-column {
+    flex-grow: 1;
+    height: 100%;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: royalblue;
+}
+
+.compare-column:hover {
+    background-color: dodgerblue;
+}
+
+.country-selector {
+    flex-grow: 1;
+}
+
+.country-info {
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    border: 5px solid cyan;
+    border-radius: 20px;
+    color: white;
+}
+
+.country-info > h2 {
+    font-size: 4vw;
+    text-align: center;
+}
+
+.country-info > h3 {
+    font-size: 3vw;
+}
+
+.country-info li {
+    font-size: 2vw;
 }
