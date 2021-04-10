@@ -22,6 +22,7 @@
             $cycle_results = mysqli_query($conn, $cycle_query);
             $cycle_array = array();
             while ($cycle_row = mysqli_fetch_array($cycle_results)) {
+                $cycle_row['age'] = (int) getAge($cycle_row['dob']);
                 array_push($cycle_array, $cycle_row);
             }
             $row['cyclists'] = $cycle_array;
@@ -32,4 +33,10 @@
         echo "<h3>No results matching your search 😬</h3>";
     }
 
+    function getAge($dateString) {
+        $dateObj = date_create($dateString);
+        $currentDate = date_create(date('Y-m-d'));
+        $dateDiff = date_diff($dateObj, $currentDate);
+        return $dateDiff->format("%y");
+    }
 ?>

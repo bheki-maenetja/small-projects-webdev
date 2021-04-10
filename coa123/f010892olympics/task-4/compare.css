@@ -18,6 +18,7 @@ main {
 .compare-column {
     flex-grow: 1;
     height: 100%;
+    max-width: 50%;
     padding: 20px;
     display: flex;
     flex-direction: column;
@@ -54,4 +55,38 @@ main {
 
 .country-info li {
     font-size: 2vw;
+}
+
+/* Tables */
+.table-wrapper {
+    overflow: scroll;
+    max-height: 400px;
+    border: 2px solid cyan;
+}
+
+.table-wrapper * {
+    font-size: 1.2vw;
+}
+
+.table-wrapper, table {
+    width: 100%;
+}
+
+table, th, td {
+    border: 1px solid cyan;
+    border-collapse: collapse;
+}
+
+th:not(.main-heading) {
+    position: sticky;
+    top: 0;
+    background-color: cadetblue;
+}
+
+th.main-heading {
+    background-color: red;
+}
+
+th, td {
+    padding: 10px;
 }
