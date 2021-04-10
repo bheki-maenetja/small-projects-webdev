@@ -11159,11 +11159,35 @@ function pageHandler(countryData) {
   }
 
   //   DOM Variables
+  const textInput1 = document.querySelector('#iso-input-1')
+  const textInput2 = document.querySelector('#iso-input-2')
+  const textInputs = document.querySelectorAll('input')
+  const submitBtn1 = document.querySelector('#submit-1')
+  const submitBtn2 = document.querySelector('#submit-2')
 
-  //   Country Data Retrieval
+  //   DOM Object Event Listeners
+  function searchHandler(e) {
+    e.preventDefault()
+    console.log(textInput1.value)
+  }
+
+  function validateInput(e) {
+    var inputString = e.target.value.trim().toLowerCase()
+    inputString.split('').forEach(char => {
+      if (!char.match('[a-z]')) {
+        inputString = inputString.replace(char, '')
+        console.log('Invalid char')
+      }
+      console.log(char)
+    })
+    e.target.value = inputString.toUpperCase()
+  }
+
+  textInputs.forEach(form => {
+    form.addEventListener('input', validateInput)
+  })
   
-
-  console.log(page_state)
+  submitBtn1.addEventListener('click', searchHandler)
 }
 
 window.addEventListener('DOMContentLoaded', loadCountryData2)
