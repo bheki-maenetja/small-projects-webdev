@@ -1,3 +1,4 @@
+
 function pageSetup () {
 
   function getData() {
@@ -14,7 +15,7 @@ function pageSetup () {
     httpRequest.open('GET', 'get_data.php', true)
     httpRequest.send()
   }
-  getData()
+  
 }
 
 window.addEventListener('DOMContentLoaded', pageSetup)

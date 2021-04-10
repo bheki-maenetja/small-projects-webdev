@@ -31,10 +31,6 @@ main {
     background-color: dodgerblue;
 }
 
-.country-selector {
-    flex-grow: 1;
-}
-
 .country-info {
     display: flex;
     flex-direction: column;
@@ -60,7 +56,7 @@ main {
 /* Tables */
 .table-wrapper {
     overflow: scroll;
-    max-height: 400px;
+    max-height: 300px;
     border: 2px solid cyan;
 }
 
@@ -89,4 +85,35 @@ th.main-heading {
 
 th, td {
     padding: 10px;
+}
+
+/* Forms */
+.country-selector {
+    min-height: 90px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    background-color: rgba(0,0,0,0.3);
+}
+.country-selector > input {
+    flex-grow: 3;
+    height: 100%;
+    padding: 10px;
+    border-radius: 10px 0 0 10px;
+    border: none;
+    font-size: 13px;
+}
+
+.country-selector > button {
+    flex-grow: 1;
+    height: 100%;
+    border: none;
+    border-radius: 0 10px 10px 0;
+    background-color: dodgerblue;
+    color: white;
+    font-size: 20px;
 }
