@@ -1,4 +1,4 @@
-export default [
+[
   {
     '0': 'AFG',
     'ISO_id': 'AFG',
