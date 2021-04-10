@@ -11158,6 +11158,14 @@ function pageHandler(countryData) {
     country_2: null
   }
 
+  // Search Functionality
+  function getCountry(searchString) {
+    const searchResult = page_state.all_countries.find(country => {
+      return country['ISO_id'] === searchString
+    })
+    console.log(searchResult)
+  }
+
   //   DOM Variables
   const textInput1 = document.querySelector('#iso-input-1')
   const textInput2 = document.querySelector('#iso-input-2')
@@ -11168,7 +11176,12 @@ function pageHandler(countryData) {
   //   DOM Object Event Listeners
   function searchHandler(e) {
     e.preventDefault()
-    console.log(textInput1.value)
+    const btnValue = e.target.value
+    if (btnValue === '1') {
+      getCountry(textInput1.value)
+    } else if (btnValue == 2) {
+      getCountry(textInput2.value)
+    }
   }
 
   function validateInput(e) {
@@ -11176,9 +11189,7 @@ function pageHandler(countryData) {
     inputString.split('').forEach(char => {
       if (!char.match('[a-z]')) {
         inputString = inputString.replace(char, '')
-        console.log('Invalid char')
       }
-      console.log(char)
     })
     e.target.value = inputString.toUpperCase()
   }
@@ -11188,6 +11199,7 @@ function pageHandler(countryData) {
   })
   
   submitBtn1.addEventListener('click', searchHandler)
+  submitBtn2.addEventListener('click', searchHandler)
 }
 
 window.addEventListener('DOMContentLoaded', loadCountryData2)
