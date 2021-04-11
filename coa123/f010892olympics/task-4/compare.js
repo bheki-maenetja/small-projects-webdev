@@ -11158,29 +11158,43 @@ function pageHandler(countryData) {
     country_2: null
   }
 
-  // Search Functionality
-  function getCountry(searchString) {
-    const searchResult = page_state.all_countries.find(country => {
-      return country['ISO_id'] === searchString
-    })
-    console.log(searchResult)
-  }
-
-  //   DOM Variables
+  // DOM Variables
   const textInput1 = document.querySelector('#iso-input-1')
   const textInput2 = document.querySelector('#iso-input-2')
   const textInputs = document.querySelectorAll('input')
   const submitBtn1 = document.querySelector('#submit-1')
   const submitBtn2 = document.querySelector('#submit-2')
+  const infoWrapper1 = document.querySelector('#wrapper-1')
+  const infoWrapper2 = document.querySelector('#wrapper-2')
 
-  //   DOM Object Event Listeners
+  // Search Functionality
+  function getCountry(searchString) {
+    const searchResult = page_state.all_countries.find(country => {
+      return country['ISO_id'] === searchString
+    })
+    return searchResult
+  }
+
+  // Rendering Functionality
+  function setCountry(countryObj, columnValue) {
+    if (columnValue === 1) {
+      renderInfo(infoWrapper1, countryObj)
+    } else if (columnValue === 2) {
+      renderInfo(infoWrapper2, countryObj)
+    }
+  }
+
+  function renderInfo(domObj, countryInfo) {
+    console.log(domObj, countryInfo)
+  }
+
+  // DOM Object Event Listeners
   function searchHandler(e) {
     e.preventDefault()
-    const btnValue = e.target.value
-    if (btnValue === '1') {
-      getCountry(textInput1.value)
-    } else if (btnValue == 2) {
-      getCountry(textInput2.value)
+    const btnValue = parseInt(e.target.value)
+    const countryObj = getCountry(textInputs[btnValue - 1].value)
+    if (countryObj) {
+      setCountry(countryObj, btnValue)
     }
   }
 
