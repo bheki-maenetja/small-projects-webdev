@@ -11229,7 +11229,7 @@ function pageHandler(countryData) {
                     })}
                     </table>
                 </div>
-                ` 
+                `.replaceAll(',', '')
                 : 
                 '<h3>This country has no cyclists<h3>'}
         </div>
