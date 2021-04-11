@@ -1,3 +1,4 @@
+/* eslint-disable indent */
 function loadCountryData() {
   var httpRequest = new XMLHttpRequest()
   httpRequest.onreadystatechange = function() {
@@ -11186,7 +11187,54 @@ function pageHandler(countryData) {
 
   function renderInfo(domObj, countryInfo) {
     console.log(domObj, countryInfo)
-  }
+    domObj.innerHTML = `
+        <div class="country-info">
+            <h2>${countryInfo.country_name} (${countryInfo.ISO_id})</h2>
+            <h3>Population: ${countryInfo.population}</h3>
+            <h3>GDP: $${countryInfo.gdp}</h3>
+            <h3>Total Medals: ${countryInfo.total}</h3>
+            <ul>
+                <li>Gold: ${countryInfo.gold}</li>
+                <li>Silver: ${countryInfo.silver}</li>
+                <li>Bronze: ${countryInfo.bronze}</li>
+            </ul>
+            ${countryInfo.cyclists.length > 0 ?
+                `
+                <div class="table-wrapper">
+                    <table>
+                        <tr>
+                            <th colspan="8" class="main-heading">Olympic Cyclists</th>
+                        </tr>
+                        <tr>
+                            <th>Name</th>
+                            <th>Gender</th>
+                            <th>Age</th>
+                            <th>Height (cm)</th>
+                            <th>Weight (kg)</th>
+                            <th>Sport</th>
+                            <th>Event</th>
+                        </tr>
+                    ${countryInfo.cyclists.map(cyclist => {
+                        return `
+                            <tr>
+                                <td>${cyclist.name}</td>
+                                <td>${cyclist.gender}</td>
+                                <td>${cyclist.age}</td>
+                                <td>${cyclist.height}</td>
+                                <td>${cyclist.weight}</td>
+                                <td>${cyclist.sport}</td>
+                                <td>${cyclist.Event}</td>
+                            </tr>
+                        `
+                    })}
+                    </table>
+                </div>
+                ` 
+                : 
+                '<h3>This country has no cyclists<h3>'}
+        </div>
+        `
+}
 
   // DOM Object Event Listeners
   function searchHandler(e) {
