@@ -11151,15 +11151,15 @@ function loadCountryData2() {
   pageHandler(dataObj)
 }
 
-function pageHandler(countryData) {
+function pageHandler() {
 
   var page_state = {
-    all_countries: countryData,
+    all_countries: null,
     country_1: null,
     country_2: null
   }
 
-  // DOM Variables
+// DOM Variables
   const textInput1 = document.querySelector('#iso-input-1')
   const textInput2 = document.querySelector('#iso-input-2')
   const textInputs = document.querySelectorAll('input')
@@ -11168,7 +11168,16 @@ function pageHandler(countryData) {
   const infoWrapper1 = document.querySelector('#wrapper-1')
   const infoWrapper2 = document.querySelector('#wrapper-2')
 
-  // Search Functionality
+// Loading Data
+function setCountryData() {
+    var countryData = localStorage.getItem('Data')
+    page_state['all_countries'] = JSON.parse(countryData)
+}
+
+setCountryData()
+console.log(page_state)
+
+// Search Functionality
   function getCountry(searchString) {
     const searchResult = page_state.all_countries.find(country => {
       return country['ISO_id'] === searchString
@@ -11186,7 +11195,7 @@ function pageHandler(countryData) {
   }
 
   function renderInfo(domObj, countryInfo) {
-    console.log(domObj, countryInfo)
+    // console.log(domObj, countryInfo)
     domObj.innerHTML = `
         <div class="country-info">
             <h2>${countryInfo.country_name} (${countryInfo.ISO_id})</h2>
@@ -11223,7 +11232,7 @@ function pageHandler(countryData) {
                                 <td>${cyclist.height}</td>
                                 <td>${cyclist.weight}</td>
                                 <td>${cyclist.sport}</td>
-                                <td>${cyclist.Event}</td>
+                                <td>${cyclist.Event.replaceAll(',', ';')}</td>
                             </tr>
                         `
                     })}
@@ -11264,4 +11273,4 @@ function pageHandler(countryData) {
   submitBtn2.addEventListener('click', searchHandler)
 }
 
-window.addEventListener('DOMContentLoaded', loadCountryData2)
+window.addEventListener('DOMContentLoaded', pageHandler)
