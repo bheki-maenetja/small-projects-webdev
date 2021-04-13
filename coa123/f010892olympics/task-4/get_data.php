@@ -21,11 +21,19 @@
             $cycle_query = "SELECT * from Cyclist where ISO_id='$iso_id'";
             $cycle_results = mysqli_query($conn, $cycle_query);
             $cycle_array = array();
+            $cyclist_total_age = 0;
             while ($cycle_row = mysqli_fetch_array($cycle_results)) {
-                $cycle_row['age'] = (int) getAge($cycle_row['dob']);
+                $cyclist_age = (int) getAge($cycle_row['dob']);
+                $cyclist_total_age += $cyclist_age;
+                $cycle_row['age'] = $cyclist_age;
                 array_push($cycle_array, $cycle_row);
             }
             $row['cyclists'] = $cycle_array;
+            if (count($cycle_array) != 0) {
+                $row['avg_cyclist_age'] = $cyclist_total_age / count($cycle_array);
+            } else {
+                $row['avg_cyclist_age'] = 0;
+            }
             array_push($countryArray, $row);
         }
         echo json_encode($countryArray);
