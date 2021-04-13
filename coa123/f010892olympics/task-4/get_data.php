@@ -29,6 +29,7 @@
                 array_push($cycle_array, $cycle_row);
             }
             $row['cyclists'] = $cycle_array;
+            $row['num_cyclists'] = count($cycle_array);
             if (count($cycle_array) != 0) {
                 $row['avg_cyclist_age'] = $cyclist_total_age / count($cycle_array);
             } else {
