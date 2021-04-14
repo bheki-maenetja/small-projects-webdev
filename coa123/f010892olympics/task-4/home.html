@@ -57,7 +57,7 @@
         httpRequest.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
                 var dataObj = JSON.parse(this.response)
-                localStorage.setItem("Data", this.response)
+                sessionStorage.setItem("Data", this.response)
             } else {
                 console.log('SOMETHING IS WRONG')
             }

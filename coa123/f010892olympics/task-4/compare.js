@@ -16,7 +16,7 @@ function pageHandler() {
 
 // Loading Data
 function setCountryData() {
-    var countryData = localStorage.getItem('Data')
+    var countryData = sessionStorage.getItem('Data')
     page_state['all_countries'] = JSON.parse(countryData)
 }
 
