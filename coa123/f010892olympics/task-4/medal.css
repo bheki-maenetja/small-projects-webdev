@@ -14,10 +14,49 @@ body {
 }
 
 .table-container {
-    max-height: 500px;
+    max-height: 550px;
     max-width: 90%;
     overflow-y: scroll;
     border: 5px solid green;
+}
+
+.table-container * {
+    font-size: 1.5vw;
+}
+
+/* Forms */
+form {
+    display: flex;
+    background-color: rgba(0,0,0,0.3);
+}
+
+.form-container {
+    flex-grow: 1;
+    display: flex;
+    margin: 10px;
+}
+
+.form-container:nth-child(2) {
+    justify-content: flex-end;
+}
+
+.form-container > input {
+    flex-grow: 1;
+    border: none;
+    border-radius: 10px 0 0 10px;
+    padding: 10px;
+}
+
+button[type=submit] {
+    border: none;
+    border-radius: 0 10px 10px 0;
+    background-color: lawngreen;
+}
+
+select {
+    border: none;
+    border-radius: 10px 0 0 10px;
+    padding: 10px;
 }
 
 /* Table Formatting */
