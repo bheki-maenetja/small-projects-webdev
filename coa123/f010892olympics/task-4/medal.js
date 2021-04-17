@@ -26,15 +26,27 @@ function pageHandler() {
 
   // Sorting Functionality
   function sortHandler(e) {
-      console.log(e.target)
-      pageState['rank_critereon'][0] = e.target.dataset.value
-      pageState['rank_critereon'][1] = !pageState['rank_critereon'][1]
-      
-      rankCritereons.forEach(elem => elem.classList.remove('selected'))
-      e.target.classList.add('selected')
+    pageState['rank_critereon'][0] = e.target.dataset.value
+    pageState['rank_critereon'][1] = !pageState['rank_critereon'][1]
+    
+    rankCritereons.forEach(elem => {
+        elem.classList.remove('selected')
+        elem.classList.remove('descending')
+        elem.classList.remove('ascending')
+    })
 
-      sortSearchResults(pageState['rank_critereon'][0], pageState['rank_critereon'][1])
-      renderTable()
+    e.target.classList.add('selected')
+
+    if (pageState['rank_critereon'][1]) {
+        e.target.classList.remove('ascending')
+        e.target.classList.add('descending')
+    } else {
+        e.target.classList.remove('descending')
+        e.target.classList.add('ascending')
+    }
+
+    sortSearchResults(pageState['rank_critereon'][0], pageState['rank_critereon'][1])
+    renderTable()
   }
 
   function sortSearchResults(critereon, sortDsc = true) {
@@ -67,13 +79,13 @@ function pageHandler() {
   function renderTable() {
     const searchResults = pageState['searchResults']
     if (searchResults.length === 0) {
-      tableBody.innerHTML = `
+        tableBody.innerHTML = `
             <tr>
                 <td colspan=8>Could not find anything matching your search</td>
             </tr>
         `
     } else {
-      tableBody.innerHTML = `
+        tableBody.innerHTML = `
             ${searchResults.map((country, index) => {
                 return `
                     <tr>

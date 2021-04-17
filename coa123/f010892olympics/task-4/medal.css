@@ -95,6 +95,14 @@ th.selected {
     color: white;
 }
 
+th.descending::after {
+    content: " ↓";
+}
+
+th.ascending::after {
+    content: " ↑";
+}
+
 td {
     padding: 10px;
 }
