@@ -5,7 +5,7 @@ function pageHandler() {
   const pageState = {
     countryData: null,
     searchResults: null,
-    rank_critereon: ['total', true]
+    rank_critereon: ['country_name', false]
   }
 
   // DOM Variables
@@ -19,6 +19,7 @@ function pageHandler() {
     pageState['countryData'] = countryDataObj
     pageState['searchResults'] = countryDataObj
     sortSearchResults(pageState['rank_critereon'][0], pageState['rank_critereon'][1])
+    // rankSearchResults()
     renderTable()
   }
 
@@ -46,6 +47,7 @@ function pageHandler() {
     }
 
     sortSearchResults(pageState['rank_critereon'][0], pageState['rank_critereon'][1])
+    // rankSearchResults()
     renderTable()
   }
 
@@ -74,6 +76,14 @@ function pageHandler() {
     }
     pageState['searchResults'] = tempResults
   }
+
+//   function rankSearchResults() {
+//     var sortedCountryData = sortSearchResults(pageState['countryData'], pageState['rank_critereon'][0])
+//     pageState['searchResults'].map(country => {
+//         country['overall_rank'] = sortedCountryData.indexOf(country) + 1
+//     })
+//     console.log(pageState)
+//   }
 
   // Rendering Functionality
   function renderTable() {
