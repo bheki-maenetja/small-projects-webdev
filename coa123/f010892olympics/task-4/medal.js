@@ -4,11 +4,13 @@ function pageHandler() {
 
   const pageState = {
     countryData: null,
-    searchResults: null
+    searchResults: null,
+    rank_critereon: ['total', true]
   }
 
   // DOM Variables
   const tableBody = document.querySelector('tbody')
+  const rankCritereons = document.querySelectorAll('.rank-critereon')
 
   // Loading Data
   function setCountryData() {
@@ -16,9 +18,50 @@ function pageHandler() {
     const countryDataObj = JSON.parse(countryData)
     pageState['countryData'] = countryDataObj
     pageState['searchResults'] = countryDataObj
+    sortSearchResults(pageState['rank_critereon'][0], pageState['rank_critereon'][1])
+    renderTable()
   }
 
   setCountryData()
+
+  // Sorting Functionality
+  function sortHandler(e) {
+      console.log(e.target)
+      pageState['rank_critereon'][0] = e.target.dataset.value
+      pageState['rank_critereon'][1] = !pageState['rank_critereon'][1]
+      
+      rankCritereons.forEach(elem => elem.classList.remove('selected'))
+      e.target.classList.add('selected')
+
+      sortSearchResults(pageState['rank_critereon'][0], pageState['rank_critereon'][1])
+      renderTable()
+  }
+
+  function sortSearchResults(critereon, sortDsc = true) {
+    var tempResults = pageState['searchResults']
+    if (sortDsc) {
+        if (critereon != 'country_name') {
+            tempResults.sort((a, b) => {
+                return parseInt(a[critereon]) < parseInt(b[critereon]) ? 1 : -1
+            })
+        } else {
+            tempResults.sort((a, b) => {
+                return a[critereon] < b[critereon] ? 1 : -1
+            })
+        }
+    } else {
+        if (critereon != 'country_name') {
+            tempResults.sort((a, b) => {
+                return parseInt(a[critereon]) > parseInt(b[critereon]) ? 1 : -1
+            })
+        } else {
+            tempResults.sort((a, b) => {
+                return a[critereon] > b[critereon] ? 1 : -1
+            })
+        }
+    }
+    pageState['searchResults'] = tempResults
+  }
 
   // Rendering Functionality
   function renderTable() {
@@ -34,6 +77,7 @@ function pageHandler() {
             ${searchResults.map((country, index) => {
                 return `
                     <tr>
+                        <td>#</td>
                         <td>${index + 1}</td>
                         <td>${country.country_name}</td>
                         <td>${country.num_cyclists}</td>
@@ -49,9 +93,10 @@ function pageHandler() {
     }
   }
 
-  renderTable()
-
   // DOM Object Event Listeners
+  rankCritereons.forEach(th => {
+      th.addEventListener('click', sortHandler)
+  })
 }
 
 window.addEventListener('DOMContentLoaded', pageHandler)

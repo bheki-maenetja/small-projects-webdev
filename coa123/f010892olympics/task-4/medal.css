@@ -65,8 +65,34 @@ table, th, td {
     border-collapse: collapse;
 }
 
+thead > tr:first-child > th {
+    /* position: sticky;
+    top: 0; */
+    background-color:aqua;
+} 
+
+thead > tr:nth-child(2) > th {
+    position: sticky;
+    top: 0;
+    /* background-color: yellow; */
+}
+
 th {
     padding: 10px;
+}
+
+th.rank-critereon {
+    background-color: blueviolet;
+    color: white;
+}
+
+th.rank-critereon:hover {
+    cursor: pointer;
+}
+
+th.selected {
+    background-color: red;
+    color: white;
 }
 
 td {
@@ -78,17 +104,6 @@ td {
     height: 100%;
 }
 
-thead > tr:first-child > th {
-    /* position: sticky;
-    top: 0; */
-    background-color:aqua;
-} 
-
-thead > tr:nth-child(2) > th {
-    position: sticky;
-    top: 0;
-    background-color: yellow;
-}
 
 /* tbody {
     background-color: greenyellow;
