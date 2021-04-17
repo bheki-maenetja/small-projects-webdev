@@ -6,52 +6,56 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Medal Table</title>
     <link rel="stylesheet" href="medal.css">
+    <script src="medal.js"></script>
 </head>
 <body>
     <main class="table-container">
         <table class="medal-table">
+            <thead>
+                <tr>
+                    <th colspan="9">
+                        <form action="">
+                            <div class="form-container">
+                                <input 
+                                    type="text"
+                                    id="iso-input"
+                                    placeholder="Enter ISO Id"
+                                >
+                                <button type="submit">Search</button>
+                            </div>
+                            <div class="form-container">
+                                <select name="" id="country-select">
+                                    <option value="" selected>Select a Country</option>
+                                    <option value="ISO-ID">Country 1</option>
+                                    <option value="ISO-ID">Country 2</option>
+                                    <option value="ISO-ID">Country 3</option>
+                                    <option value="ISO-ID">Country 4</option>
+                                    <option value="ISO-ID">Republic of Australisia</option>
+                                </select>
+                                <button type="submit">Add</button>
+                                <button>Clear</button>
+                                <button>Compare</button>
+                            </div>
+                        </form>
+                        <span>
+                            Displaying: USA, GER, CHN, CAN
+                        </span>
+                    </th>
+                </tr>
+                <tr>
+                    <th>Rank &uarr;</th>
+                    <th>Name &uarr;</th>
+                    <th>Number of Cyclists &uarr;</th>
+                    <th>Average Age &uarr;</th>
+                    <th>Gold Medals &uarr;</th>
+                    <th>Silver Medals &uarr;</th>
+                    <th>Bronze Medals &uarr;</th>
+                    <th>Total Medals &uarr;</th>
+                </tr>
+            </thead>
+            <tbody>
             <tr>
-                <th colspan="9">
-                    <form action="">
-                        <div class="form-container">
-                            <input 
-                                type="text"
-                                id="iso-input"
-                                placeholder="Enter ISO Id"
-                            >
-                            <button type="submit">Search</button>
-                        </div>
-                        <div class="form-container">
-                            <select name="" id="country-select">
-                                <option value="" selected>Select a Country</option>
-                                <option value="ISO-ID">Country 1</option>
-                                <option value="ISO-ID">Country 2</option>
-                                <option value="ISO-ID">Country 3</option>
-                                <option value="ISO-ID">Country 4</option>
-                                <option value="ISO-ID">Republic of Australisia</option>
-                            </select>
-                            <button type="submit">Add</button>
-                            <button>Clear</button>
-                            <button>Compare</button>
-                        </div>
-                    </form>
-                    <span>
-                        Displaying: USA, GER, CHN, CAN
-                    </span>
-                </th>
-            </tr>
-            <tr>
-                <th><span>Rank &uarr;</span></th>
-                <th>Name &uarr;</th>
-                <th>Number of Cyclists &uarr;</th>
-                <th>Average Age &uarr;</th>
-                <th>Gold Medals &uarr;</th>
-                <th>Silver Medals &uarr;</th>
-                <th>Bronze Medals &uarr;</th>
-                <th>Total Medals &uarr;</th>
-            </tr>
-            <tr>
-                <td>#</td>
+                <td class="first-row">#</td>
                 <td>Republic of Australisia</td>
                 <td>17</td>
                 <td>25</td>
@@ -460,6 +464,7 @@
                 <td>34</td>
                 <td>104</td>
             </tr>
+            </tbody>
         </table>
     </main>
 </body>

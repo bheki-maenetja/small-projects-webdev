@@ -77,3 +77,21 @@ td {
     padding: 10px;
     height: 100%;
 }
+
+thead > tr:first-child > th {
+    /* position: sticky;
+    top: 0; */
+    background-color:aqua;
+} 
+
+thead > tr:nth-child(2) > th {
+    position: sticky;
+    top: 0;
+    background-color: yellow;
+}
+
+/* tbody {
+    background-color: greenyellow;
+    max-height: 100px;
+    overflow-y: scroll;
+} */
