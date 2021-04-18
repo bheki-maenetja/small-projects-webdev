@@ -15,6 +15,7 @@ function pageHandler() {
     const countryInput = document.querySelector('#country-input')
     const countrySelector = document.querySelector('#country-select')
     const addCountryBtn = document.querySelector('#add-country')
+    const clearCountriesBtn = document.querySelector('#clear-countries')
     const displayedCountries = document.querySelector('#displayed_countries')
 
   // Loading Data
@@ -92,11 +93,12 @@ function pageHandler() {
     function validateInput(e) {
         var inputString = e.target.value.trim().toLowerCase()
         inputString.split('').forEach(char => {
-        if (!char.match('[a-z]')) {
-            inputString = inputString.replace(char, '')
-        }
+            if (!char.match('[a-z]')) {
+                inputString = inputString.replace(char, '')
+            }
         })
         e.target.value = inputString.toUpperCase()
+        clearSelection()
         searchHandler()
         sortSearchResults(pageState['rank_critereon'][0], pageState['rank_critereon'][1])
         renderTable()
@@ -115,7 +117,11 @@ function pageHandler() {
 
     function selectHandler(e) {
         e.preventDefault()
+        countryInput.value = ''
         const isoId = countrySelector.value
+        if (clearCountriesBtn.style.display != 'block') {
+            clearCountriesBtn.style.display = 'block'
+        }
         if (isoId != '') {
             pageState['selected_countries'].push(isoId)
             pageState['searchResults'] = pageState['countryData'].filter(country => {
@@ -127,6 +133,20 @@ function pageHandler() {
             renderTable()
         }
         console.log(pageState['selected_countries'])
+    }
+
+    function clearSelection(e = null) {
+        pageState['selected_countries'] = []
+        clearCountriesBtn.style.display = 'none'
+        renderSelector()
+        renderSelectedCountries()
+        if (e) {
+            e.preventDefault()
+            countryInput.value = ''
+            pageState['searchResults'] = pageState['countryData'].map(elem => elem)
+            sortSearchResults(pageState['rank_critereon'][0], pageState['rank_critereon'][1])
+            renderTable()
+        }
     }
 
   // Rendering Functionality
@@ -173,7 +193,11 @@ function pageHandler() {
     }
 
     function renderSelectedCountries() {
-        displayedCountries.innerHTML = `Displaying: ${pageState['selected_countries'].join(', ')}`
+        if (pageState['selected_countries'].length > 0) {
+            displayedCountries.innerHTML = `Displaying: ${pageState['selected_countries'].join(', ')}`
+        } else {
+            displayedCountries.innerHTML = ''
+        }
     }
 
   // DOM Object Event Listeners
@@ -183,7 +207,7 @@ function pageHandler() {
 
     countryInput.addEventListener('input', validateInput)
     addCountryBtn.addEventListener('click', selectHandler)
-
+    clearCountriesBtn.addEventListener('click', clearSelection)
 }
 
 window.addEventListener('DOMContentLoaded', pageHandler)

@@ -47,10 +47,8 @@ form {
     padding: 10px;
 }
 
-button[type=submit] {
-    border: none;
-    border-radius: 0 10px 10px 0;
-    background-color: lawngreen;
+button#clear-countries {
+    display: none;
 }
 
 select {
