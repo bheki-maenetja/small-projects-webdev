@@ -33,7 +33,7 @@
             if (count($cycle_array) != 0) {
                 $row['avg_cyclist_age'] = $cyclist_total_age / count($cycle_array);
             } else {
-                $row['avg_cyclist_age'] = 0;
+                $row['avg_cyclist_age'] = 1000;
             }
             array_push($countryArray, $row);
         }

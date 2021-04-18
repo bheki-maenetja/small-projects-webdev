@@ -90,9 +90,15 @@ function pageHandler() {
     function rankSearchResults(critereon) {
         var tempResults = pageState['rankedData']
         if (critereon != 'country_name') {
-            tempResults.sort((a, b) => {
-                return parseInt(a[critereon]) < parseInt(b[critereon]) ? 1 : -1
-            })
+            if (critereon === 'avg_cyclist_age') {
+                tempResults.sort((a, b) => {
+                    return parseInt(a[critereon]) > parseInt(b[critereon]) ? 1 : -1
+                })
+            } else {
+                tempResults.sort((a, b) => {
+                    return parseInt(a[critereon]) < parseInt(b[critereon]) ? 1 : -1
+                })
+            }
         } else {
             tempResults.sort((a, b) => {
                 return a[critereon] > b[critereon] ? 1 : -1
@@ -186,11 +192,11 @@ function pageHandler() {
                 ${searchResults.map((country, index) => {
                     return `
                         <tr>
-                            <td>${pageState['rankedData'].indexOf(country) + 1}</td>
                             <td>${index + 1}</td>
+                            <td>${pageState['rankedData'].indexOf(country) + 1}</td>
                             <td>${country.country_name} (${country.ISO_id})</td>
                             <td>${country.num_cyclists}</td>
-                            <td>${country.avg_cyclist_age === 0 ? 'n/a' : country.avg_cyclist_age.toFixed(1)}</td>
+                            <td>${country.avg_cyclist_age === 1000 ? 'n/a' : country.avg_cyclist_age.toFixed(1)}</td>
                             <td>${country.gold}</td>
                             <td>${country.silver}</td>
                             <td>${country.bronze}</td>
