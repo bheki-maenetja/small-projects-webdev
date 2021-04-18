@@ -16,6 +16,7 @@ function pageHandler() {
     const countrySelector = document.querySelector('#country-select')
     const addCountryBtn = document.querySelector('#add-country')
     const clearCountriesBtn = document.querySelector('#clear-countries')
+    const compareCountriesBtn = document.querySelector('#compare-countries')
     const displayedCountries = document.querySelector('#displayed_countries')
 
   // Loading Data
@@ -119,15 +120,23 @@ function pageHandler() {
         e.preventDefault()
         countryInput.value = ''
         const isoId = countrySelector.value
+
         if (clearCountriesBtn.style.display != 'block') {
             clearCountriesBtn.style.display = 'block'
         }
+
         if (isoId != '') {
             pageState['selected_countries'].push(isoId)
             pageState['searchResults'] = pageState['countryData'].filter(country => {
                 return pageState['selected_countries'].includes(country.ISO_id)
             })
             sortSearchResults(pageState['rank_critereon'][0], pageState['rank_critereon'][1])
+
+            if (pageState['selected_countries'].length == 2) {
+                compareCountriesBtn.style.display = 'block'
+            } else {
+                compareCountriesBtn.style.display = 'none'
+            }
             renderSelector()
             renderSelectedCountries()
             renderTable()
@@ -138,6 +147,7 @@ function pageHandler() {
     function clearSelection(e = null) {
         pageState['selected_countries'] = []
         clearCountriesBtn.style.display = 'none'
+        compareCountriesBtn.style.display = 'none'
         renderSelector()
         renderSelectedCountries()
         if (e) {

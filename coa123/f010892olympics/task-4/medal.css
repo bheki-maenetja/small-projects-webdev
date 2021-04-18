@@ -47,7 +47,7 @@ form {
     padding: 10px;
 }
 
-button#clear-countries {
+button#clear-countries, button#compare-countries {
     display: none;
 }
 
