@@ -5,6 +5,7 @@ function pageHandler() {
     const pageState = {
         countryData: null,
         searchResults: null,
+        rankedData: null,
         rank_critereon: ['country_name', false],
         selected_countries: []
     }
@@ -24,7 +25,9 @@ function pageHandler() {
         const countryData = sessionStorage.getItem('Data')
         const countryDataObj = JSON.parse(countryData)
         pageState['countryData'] = countryDataObj.map(elem => elem)
+        pageState['rankedData'] = countryDataObj.map(elem => elem)
         pageState['searchResults'] = countryDataObj.map(elem => elem)
+        rankSearchResults(pageState['rank_critereon'][0])
         sortSearchResults(pageState['rank_critereon'][0], pageState['rank_critereon'][1])
         renderSelector()
         renderTable()
@@ -53,6 +56,7 @@ function pageHandler() {
             e.target.classList.add('ascending')
         }
 
+        rankSearchResults(pageState['rank_critereon'][0])
         sortSearchResults(pageState['rank_critereon'][0], pageState['rank_critereon'][1])
         renderTable()
     }
@@ -83,13 +87,19 @@ function pageHandler() {
         pageState['searchResults'] = tempResults
     }
 
-//   function rankSearchResults() {
-//     var sortedCountryData = sortSearchResults(pageState['countryData'], pageState['rank_critereon'][0])
-//     pageState['searchResults'].map(country => {
-//         country['overall_rank'] = sortedCountryData.indexOf(country) + 1
-//     })
-//     console.log(pageState)
-//   }
+    function rankSearchResults(critereon) {
+        var tempResults = pageState['rankedData']
+        if (critereon != 'country_name') {
+            tempResults.sort((a, b) => {
+                return parseInt(a[critereon]) < parseInt(b[critereon]) ? 1 : -1
+            })
+        } else {
+            tempResults.sort((a, b) => {
+                return a[critereon] > b[critereon] ? 1 : -1
+            })
+        }
+        pageState['rankedData'] = tempResults
+    }
   // Searching Functionality
     function validateInput(e) {
         var inputString = e.target.value.trim().toLowerCase()
@@ -101,6 +111,7 @@ function pageHandler() {
         e.target.value = inputString.toUpperCase()
         clearSelection()
         searchHandler()
+        rankSearchResults(pageState['rank_critereon'][0])
         sortSearchResults(pageState['rank_critereon'][0], pageState['rank_critereon'][1])
         renderTable()
     }
@@ -130,6 +141,7 @@ function pageHandler() {
             pageState['searchResults'] = pageState['countryData'].filter(country => {
                 return pageState['selected_countries'].includes(country.ISO_id)
             })
+            rankSearchResults(pageState['rank_critereon'][0])
             sortSearchResults(pageState['rank_critereon'][0], pageState['rank_critereon'][1])
 
             if (pageState['selected_countries'].length == 2) {
@@ -154,6 +166,7 @@ function pageHandler() {
             e.preventDefault()
             countryInput.value = ''
             pageState['searchResults'] = pageState['countryData'].map(elem => elem)
+            rankSearchResults(pageState['rank_critereon'][0])
             sortSearchResults(pageState['rank_critereon'][0], pageState['rank_critereon'][1])
             renderTable()
         }
@@ -173,7 +186,7 @@ function pageHandler() {
                 ${searchResults.map((country, index) => {
                     return `
                         <tr>
-                            <td>#</td>
+                            <td>${pageState['rankedData'].indexOf(country) + 1}</td>
                             <td>${index + 1}</td>
                             <td>${country.country_name} (${country.ISO_id})</td>
                             <td>${country.num_cyclists}</td>
