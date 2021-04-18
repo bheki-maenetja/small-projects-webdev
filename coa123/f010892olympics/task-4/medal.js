@@ -5,13 +5,16 @@ function pageHandler() {
     const pageState = {
         countryData: null,
         searchResults: null,
-        rank_critereon: ['country_name', false]
+        rank_critereon: ['country_name', false],
+        selected_countries: []
     }
 
   // DOM Variables
     const tableBody = document.querySelector('tbody')
     const rankCritereons = document.querySelectorAll('.rank-critereon')
     const countryInput = document.querySelector('#country-input')
+    const countrySelector = document.querySelector('#country-select')
+    const addCountryBtn = document.querySelector('#add-country')
 
   // Loading Data
     function setCountryData() {
@@ -20,6 +23,7 @@ function pageHandler() {
         pageState['countryData'] = countryDataObj
         pageState['searchResults'] = countryDataObj
         sortSearchResults(pageState['rank_critereon'][0], pageState['rank_critereon'][1])
+        renderSelector()
         renderTable()
     }
 
@@ -106,6 +110,12 @@ function pageHandler() {
         }
     }
 
+    function selectHandler(e) {
+        e.preventDefault()
+        console.log(countrySelector.value)
+        countrySelector.value = ''
+    }
+
   // Rendering Functionality
     function renderTable() {
         const searchResults = pageState['searchResults']
@@ -136,12 +146,22 @@ function pageHandler() {
         }
     }
 
+    function renderSelector() {
+        countrySelector.innerHTML = `
+            <option value="" selected>Select a Country</option>
+            ${pageState['countryData'].map(country => {
+                return `<option value="${country.ISO_id}">${country.country_name}</option>`
+            })}
+        `
+    }
+
   // DOM Object Event Listeners
     rankCritereons.forEach(th => {
         th.addEventListener('click', sortHandler)
     })
 
     countryInput.addEventListener('input', validateInput)
+    addCountryBtn.addEventListener('click', selectHandler)
 
 }
 
