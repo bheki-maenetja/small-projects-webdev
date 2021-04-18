@@ -15,13 +15,14 @@ function pageHandler() {
     const countryInput = document.querySelector('#country-input')
     const countrySelector = document.querySelector('#country-select')
     const addCountryBtn = document.querySelector('#add-country')
+    const displayedCountries = document.querySelector('#displayed_countries')
 
   // Loading Data
     function setCountryData() {
         const countryData = sessionStorage.getItem('Data')
         const countryDataObj = JSON.parse(countryData)
-        pageState['countryData'] = countryDataObj
-        pageState['searchResults'] = countryDataObj
+        pageState['countryData'] = countryDataObj.map(elem => elem)
+        pageState['searchResults'] = countryDataObj.map(elem => elem)
         sortSearchResults(pageState['rank_critereon'][0], pageState['rank_critereon'][1])
         renderSelector()
         renderTable()
@@ -97,8 +98,10 @@ function pageHandler() {
         })
         e.target.value = inputString.toUpperCase()
         searchHandler()
+        sortSearchResults(pageState['rank_critereon'][0], pageState['rank_critereon'][1])
         renderTable()
     }
+
     function searchHandler() {
         const searchString = countryInput.value
         if (searchString === '') {
@@ -112,8 +115,18 @@ function pageHandler() {
 
     function selectHandler(e) {
         e.preventDefault()
-        console.log(countrySelector.value)
-        countrySelector.value = ''
+        const isoId = countrySelector.value
+        if (isoId != '') {
+            pageState['selected_countries'].push(isoId)
+            pageState['searchResults'] = pageState['countryData'].filter(country => {
+                return pageState['selected_countries'].includes(country.ISO_id)
+            })
+            sortSearchResults(pageState['rank_critereon'][0], pageState['rank_critereon'][1])
+            renderSelector()
+            renderSelectedCountries()
+            renderTable()
+        }
+        console.log(pageState['selected_countries'])
     }
 
   // Rendering Functionality
@@ -150,9 +163,17 @@ function pageHandler() {
         countrySelector.innerHTML = `
             <option value="" selected>Select a Country</option>
             ${pageState['countryData'].map(country => {
-                return `<option value="${country.ISO_id}">${country.country_name}</option>`
+                if (!pageState['selected_countries'].includes(country.ISO_id)) {
+                    return `<option value="${country.ISO_id}">${country.country_name}</option>`
+                } else {
+                    return ''
+                }
             })}
         `
+    }
+
+    function renderSelectedCountries() {
+        displayedCountries.innerHTML = `Displaying: ${pageState['selected_countries'].join(', ')}`
     }
 
   // DOM Object Event Listeners
