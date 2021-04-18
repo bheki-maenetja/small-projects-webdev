@@ -1,81 +1,80 @@
 /* eslint-disable indent */
 function pageHandler() {
-  console.log('Let\'s go!!!')
+    console.log('Let\'s go!!!')
 
-  const pageState = {
-    countryData: null,
-    searchResults: null,
-    rank_critereon: ['country_name', false]
-  }
+    const pageState = {
+        countryData: null,
+        searchResults: null,
+        rank_critereon: ['country_name', false]
+    }
 
   // DOM Variables
-  const tableBody = document.querySelector('tbody')
-  const rankCritereons = document.querySelectorAll('.rank-critereon')
+    const tableBody = document.querySelector('tbody')
+    const rankCritereons = document.querySelectorAll('.rank-critereon')
+    const countryInput = document.querySelector('#country-input')
 
   // Loading Data
-  function setCountryData() {
-    const countryData = sessionStorage.getItem('Data')
-    const countryDataObj = JSON.parse(countryData)
-    pageState['countryData'] = countryDataObj
-    pageState['searchResults'] = countryDataObj
-    sortSearchResults(pageState['rank_critereon'][0], pageState['rank_critereon'][1])
-    // rankSearchResults()
-    renderTable()
-  }
+    function setCountryData() {
+        const countryData = sessionStorage.getItem('Data')
+        const countryDataObj = JSON.parse(countryData)
+        pageState['countryData'] = countryDataObj
+        pageState['searchResults'] = countryDataObj
+        sortSearchResults(pageState['rank_critereon'][0], pageState['rank_critereon'][1])
+        renderTable()
+    }
 
-  setCountryData()
+    setCountryData()
 
   // Sorting Functionality
-  function sortHandler(e) {
-    pageState['rank_critereon'][0] = e.target.dataset.value
-    pageState['rank_critereon'][1] = !pageState['rank_critereon'][1]
-    
-    rankCritereons.forEach(elem => {
-        elem.classList.remove('selected')
-        elem.classList.remove('descending')
-        elem.classList.remove('ascending')
-    })
+    function sortHandler(e) {
+        pageState['rank_critereon'][0] = e.target.dataset.value
+        pageState['rank_critereon'][1] = !pageState['rank_critereon'][1]
+        
+        rankCritereons.forEach(elem => {
+            elem.classList.remove('selected')
+            elem.classList.remove('descending')
+            elem.classList.remove('ascending')
+        })
 
-    e.target.classList.add('selected')
+        e.target.classList.add('selected')
 
-    if (pageState['rank_critereon'][1]) {
-        e.target.classList.remove('ascending')
-        e.target.classList.add('descending')
-    } else {
-        e.target.classList.remove('descending')
-        e.target.classList.add('ascending')
+        if (pageState['rank_critereon'][1]) {
+            e.target.classList.remove('ascending')
+            e.target.classList.add('descending')
+        } else {
+            e.target.classList.remove('descending')
+            e.target.classList.add('ascending')
+        }
+
+        sortSearchResults(pageState['rank_critereon'][0], pageState['rank_critereon'][1])
+        renderTable()
     }
 
-    sortSearchResults(pageState['rank_critereon'][0], pageState['rank_critereon'][1])
-    // rankSearchResults()
-    renderTable()
-  }
-
-  function sortSearchResults(critereon, sortDsc = true) {
-    var tempResults = pageState['searchResults']
-    if (sortDsc) {
-        if (critereon != 'country_name') {
-            tempResults.sort((a, b) => {
-                return parseInt(a[critereon]) < parseInt(b[critereon]) ? 1 : -1
-            })
+    function sortSearchResults(critereon, sortDsc = true) {
+        var tempResults = pageState['searchResults']
+        if (sortDsc) {
+            if (critereon != 'country_name') {
+                tempResults.sort((a, b) => {
+                    return parseInt(a[critereon]) < parseInt(b[critereon]) ? 1 : -1
+                })
+            } else {
+                tempResults.sort((a, b) => {
+                    return a[critereon] < b[critereon] ? 1 : -1
+                })
+            }
         } else {
-            tempResults.sort((a, b) => {
-                return a[critereon] < b[critereon] ? 1 : -1
-            })
+            if (critereon != 'country_name') {
+                tempResults.sort((a, b) => {
+                    return parseInt(a[critereon]) > parseInt(b[critereon]) ? 1 : -1
+                })
+            } else {
+                tempResults.sort((a, b) => {
+                    return a[critereon] > b[critereon] ? 1 : -1
+                })
+            }
         }
-    } else {
-        if (critereon != 'country_name') {
-            tempResults.sort((a, b) => {
-                return parseInt(a[critereon]) > parseInt(b[critereon]) ? 1 : -1
-            })
-        } else {
-            tempResults.sort((a, b) => {
-                return a[critereon] > b[critereon] ? 1 : -1
-            })
-        }
+        pageState['searchResults'] = tempResults
     }
-    pageState['searchResults'] = tempResults
-  }
 
 //   function rankSearchResults() {
 //     var sortedCountryData = sortSearchResults(pageState['countryData'], pageState['rank_critereon'][0])
@@ -84,41 +83,58 @@ function pageHandler() {
 //     })
 //     console.log(pageState)
 //   }
+  // Searching Functionality
+    function validateInput(e) {
+        var inputString = e.target.value.trim().toLowerCase()
+        inputString.split('').forEach(char => {
+        if (!char.match('[a-z]')) {
+            inputString = inputString.replace(char, '')
+        }
+        })
+        e.target.value = inputString.toUpperCase()
+        searchHandler()
+    }
+    function searchHandler() {
+        console.log(countryInput.value)
+    }
 
   // Rendering Functionality
-  function renderTable() {
-    const searchResults = pageState['searchResults']
-    if (searchResults.length === 0) {
-        tableBody.innerHTML = `
-            <tr>
-                <td colspan=8>Could not find anything matching your search</td>
-            </tr>
-        `
-    } else {
-        tableBody.innerHTML = `
-            ${searchResults.map((country, index) => {
-                return `
-                    <tr>
-                        <td>#</td>
-                        <td>${index + 1}</td>
-                        <td>${country.country_name}</td>
-                        <td>${country.num_cyclists}</td>
-                        <td>${country.avg_cyclist_age === 0 ? 'n/a' : country.avg_cyclist_age.toFixed(1)}</td>
-                        <td>${country.gold}</td>
-                        <td>${country.silver}</td>
-                        <td>${country.bronze}</td>
-                        <td>${country.total}</td>
-                    </tr>
-                `
-            })}
-        `.replaceAll(',', '')
+    function renderTable() {
+        const searchResults = pageState['searchResults']
+        if (searchResults.length === 0) {
+            tableBody.innerHTML = `
+                <tr>
+                    <td colspan=8>Could not find anything matching your search</td>
+                </tr>
+            `
+        } else {
+            tableBody.innerHTML = `
+                ${searchResults.map((country, index) => {
+                    return `
+                        <tr>
+                            <td>#</td>
+                            <td>${index + 1}</td>
+                            <td>${country.country_name} (${country.ISO_id})</td>
+                            <td>${country.num_cyclists}</td>
+                            <td>${country.avg_cyclist_age === 0 ? 'n/a' : country.avg_cyclist_age.toFixed(1)}</td>
+                            <td>${country.gold}</td>
+                            <td>${country.silver}</td>
+                            <td>${country.bronze}</td>
+                            <td>${country.total}</td>
+                        </tr>
+                    `
+                })}
+            `.replaceAll(',', '')
+        }
     }
-  }
 
   // DOM Object Event Listeners
-  rankCritereons.forEach(th => {
-      th.addEventListener('click', sortHandler)
-  })
+    rankCritereons.forEach(th => {
+        th.addEventListener('click', sortHandler)
+    })
+
+    countryInput.addEventListener('input', validateInput)
+
 }
 
 window.addEventListener('DOMContentLoaded', pageHandler)
