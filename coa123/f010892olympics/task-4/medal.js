@@ -93,9 +93,17 @@ function pageHandler() {
         })
         e.target.value = inputString.toUpperCase()
         searchHandler()
+        renderTable()
     }
     function searchHandler() {
-        console.log(countryInput.value)
+        const searchString = countryInput.value
+        if (searchString === '') {
+            pageState['searchResults'] = pageState['countryData'].map(elem => elem)
+        } else {
+            pageState['searchResults'] = pageState['countryData'].filter(country => {
+                return country.ISO_id.includes(searchString)
+            })
+        }
     }
 
   // Rendering Functionality
