@@ -63,20 +63,19 @@ table, th, td {
     border-collapse: collapse;
 }
 
+th {
+    padding: 10px;
+    background-color: navy;
+    color: white
+}
+
 thead > tr:first-child > th {
-    /* position: sticky;
-    top: 0; */
     background-color:aqua;
 } 
 
 thead > tr:nth-child(2) > th {
     position: sticky;
     top: 0;
-    /* background-color: yellow; */
-}
-
-th {
-    padding: 10px;
 }
 
 th.rank-critereon {
@@ -105,14 +104,12 @@ td {
     padding: 10px;
 }
 
+tr:hover {
+    background-color: yellow;
+}
+
 .medal-table {
     padding: 10px;
     height: 100%;
 }
 
-
-/* tbody {
-    background-color: greenyellow;
-    max-height: 100px;
-    overflow-y: scroll;
-} */
