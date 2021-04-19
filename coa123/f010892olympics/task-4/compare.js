@@ -18,6 +18,18 @@ function pageHandler() {
     function setCountryData() {
         var countryData = sessionStorage.getItem('Data')
         page_state['all_countries'] = JSON.parse(countryData)
+
+        var urlParams = new URLSearchParams(window.location.search)
+        const firstCountry = urlParams.get('first_country')
+        const secondCountry = urlParams.get('second_country')
+        if (firstCountry && secondCountry) {
+            const firstCountryObj = page_state['all_countries'].find(country => country.ISO_id === firstCountry)
+            const secondCountryObj = page_state['all_countries'].find(country => country.ISO_id === secondCountry)
+            textInputs[0].value = firstCountry
+            textInputs[1].value = secondCountry
+            renderInfo(infoWrapper1, firstCountryObj)
+            renderInfo(infoWrapper2, secondCountryObj)
+        }
     }
 
 setCountryData()
