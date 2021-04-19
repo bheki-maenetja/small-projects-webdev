@@ -229,6 +229,15 @@ function pageHandler() {
         }
     }
 
+  // Page Transition
+    function pageTransition(e) {
+        e.preventDefault()
+        var urlParams = new URLSearchParams()
+        urlParams.append('first_country', pageState['selected_countries'][0])
+        urlParams.append('second_country', pageState['selected_countries'][1])
+        window.open(`country-compare.html?${urlParams.toString()}` , '_self')
+    }
+
   // DOM Object Event Listeners
     rankCritereons.forEach(th => {
         th.addEventListener('click', sortHandler)
@@ -237,6 +246,7 @@ function pageHandler() {
     countryInput.addEventListener('input', validateInput)
     addCountryBtn.addEventListener('click', selectHandler)
     clearCountriesBtn.addEventListener('click', clearSelection)
+    compareCountriesBtn.addEventListener('click', pageTransition)
 }
 
 window.addEventListener('DOMContentLoaded', pageHandler)
