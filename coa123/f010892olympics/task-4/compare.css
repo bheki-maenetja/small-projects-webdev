@@ -1,12 +1,11 @@
+/* Imports */
+@import url('common.css');
+
+/* General Styling */
 * {
     box-sizing: border-box;
     margin: 0;
     font-family: helvetica;
-}
-
-body {
-    height: 100vh;
-    width: 100vw;
 }
 
 main {
