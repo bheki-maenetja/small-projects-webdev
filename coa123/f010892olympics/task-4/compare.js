@@ -1,7 +1,7 @@
 /* eslint-disable indent */
 function pageHandler() {
 
-    var page_state = {
+    var pageState = {
         all_countries: null,
         country_1: null,
         country_2: null
@@ -17,14 +17,14 @@ function pageHandler() {
 // Loading Data
     function setCountryData() {
         var countryData = sessionStorage.getItem('Data')
-        page_state['all_countries'] = JSON.parse(countryData)
+        pageState['all_countries'] = JSON.parse(countryData)
 
         var urlParams = new URLSearchParams(window.location.search)
         const firstCountry = urlParams.get('first_country')
         const secondCountry = urlParams.get('second_country')
         if (firstCountry && secondCountry) {
-            const firstCountryObj = page_state['all_countries'].find(country => country.ISO_id === firstCountry)
-            const secondCountryObj = page_state['all_countries'].find(country => country.ISO_id === secondCountry)
+            const firstCountryObj = pageState['all_countries'].find(country => country.ISO_id === firstCountry)
+            const secondCountryObj = pageState['all_countries'].find(country => country.ISO_id === secondCountry)
             textInputs[0].value = firstCountry
             textInputs[1].value = secondCountry
             renderInfo(infoWrapper1, firstCountryObj)
@@ -33,11 +33,11 @@ function pageHandler() {
     }
 
 setCountryData()
-console.log(page_state)
+console.log(pageState)
 
 // Search Functionality
     function getCountry(searchString) {
-        const searchResult = page_state.all_countries.find(country => {
+        const searchResult = pageState.all_countries.find(country => {
         return country['ISO_id'] === searchString
         })
         return searchResult
