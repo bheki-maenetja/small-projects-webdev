@@ -31,6 +31,11 @@ main {
     background-color: dodgerblue;
 }
 
+.compare-column#table-viewer {
+    flex-grow: 0;
+    background-color: cyan;
+}
+
 .country-info {
     display: flex;
     flex-direction: column;
