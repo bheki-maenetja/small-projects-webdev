@@ -16,6 +16,8 @@ body {
     justify-content: center;
     align-items: center;
     background-color: navy;
+    position: sticky;
+    top: 0;
 }
 
 .navbar > .nav-link {
