@@ -24,7 +24,22 @@ function pageHandler() {
         const countryDataObj = JSON.parse(countryData)
         pageState['countryData'] = countryDataObj.map(elem => elem)
         pageState['rankedData'] = countryDataObj.map(elem => elem)
-        pageState['searchResults'] = countryDataObj.map(elem => elem)
+
+        var urlParams = new URLSearchParams(window.location.search)
+        const firstCountry = urlParams.get('first_country')
+        const secondCountry = urlParams.get('second_country')
+
+        if (firstCountry && secondCountry) {
+            pageState['searchResults'] = pageState['countryData'].filter(country => {
+                return country.ISO_id === firstCountry || country.ISO_id === secondCountry
+            })
+            pageState['selected_countries'] = [firstCountry, secondCountry]
+            clearCountriesBtn.style.display = 'block'
+            compareCountriesBtn.style.display = 'block'
+            renderSelectedCountries()
+        } else {
+            pageState['searchResults'] = countryDataObj.map(elem => elem)
+        }
         rankSearchResults(pageState['rank_critereon'][0])
         sortSearchResults(pageState['rank_critereon'][0], pageState['rank_critereon'][1])
         renderSelector()
