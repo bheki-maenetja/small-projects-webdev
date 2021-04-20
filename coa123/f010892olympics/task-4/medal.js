@@ -88,15 +88,15 @@ function pageHandler() {
     }
 
     function rankSearchResults(critereon) {
-        var tempResults = pageState['rankedData']
+        var tempResults = pageState['countryData'].map(elem => elem)
         if (critereon != 'country_name') {
             if (critereon === 'avg_cyclist_age') {
                 tempResults.sort((a, b) => {
-                    return parseInt(a[critereon]) > parseInt(b[critereon]) ? 1 : -1
+                    return parseInt(a[critereon]) >= parseInt(b[critereon]) ? 1 : -1
                 })
             } else {
                 tempResults.sort((a, b) => {
-                    return parseInt(a[critereon]) < parseInt(b[critereon]) ? 1 : -1
+                    return parseInt(a[critereon]) <= parseInt(b[critereon]) ? 1 : -1
                 })
             }
         } else {
