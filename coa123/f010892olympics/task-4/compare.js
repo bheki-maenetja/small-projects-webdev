@@ -7,14 +7,16 @@ function pageHandler() {
         country_2: null
     }
 
-// DOM Variables
+  // DOM Variables
     const textInputs = document.querySelectorAll('input')
     const submitBtn1 = document.querySelector('#submit-1')
     const submitBtn2 = document.querySelector('#submit-2')
     const infoWrapper1 = document.querySelector('#wrapper-1')
     const infoWrapper2 = document.querySelector('#wrapper-2')
+    const tableViewerDiv = document.querySelector('.page-transition')
+    const tableViewerBtn = document.querySelector('#table-viewer')
 
-// Loading Data
+  // Loading Data
     function setCountryData() {
         var countryData = sessionStorage.getItem('Data')
         pageState['all_countries'] = JSON.parse(countryData)
@@ -27,18 +29,18 @@ function pageHandler() {
             const secondCountryObj = pageState['all_countries'].find(country => country.ISO_id === secondCountry)
             textInputs[0].value = firstCountry
             textInputs[1].value = secondCountry
+            pageState['country_1'] = firstCountry
+            pageState['country_2'] = secondCountry
             renderInfo(infoWrapper1, firstCountryObj)
             renderInfo(infoWrapper2, secondCountryObj)
+            tableViewerDiv.style.display = 'flex'
         }
     }
 
-setCountryData()
-console.log(pageState)
-
-// Search Functionality
+  // Search Functionality
     function getCountry(searchString) {
         const searchResult = pageState.all_countries.find(country => {
-        return country['ISO_id'] === searchString
+            return country['ISO_id'] === searchString
         })
         return searchResult
     }
@@ -46,9 +48,17 @@ console.log(pageState)
   // Rendering Functionality
     function setCountry(countryObj, columnValue) {
         if (columnValue === 1) {
-        renderInfo(infoWrapper1, countryObj)
+            pageState['country_1'] = countryObj.ISO_id
+            renderInfo(infoWrapper1, countryObj)
         } else if (columnValue === 2) {
-        renderInfo(infoWrapper2, countryObj)
+            pageState['country_2'] = countryObj.ISO_id
+            renderInfo(infoWrapper2, countryObj)
+        }
+
+        if (pageState['country_1'] && pageState['country_2'] && pageState['country_1'] != pageState['country_2']) {
+            tableViewerDiv.style.display = 'flex'
+        } else {
+            tableViewerDiv.style.display = 'none'
         }
     }
 
@@ -102,13 +112,25 @@ console.log(pageState)
             `
     }
 
+  // Page Transition
+    function pageTransition(e) {
+        e.preventDefault()
+        var urlParams = new URLSearchParams()
+        urlParams.append('first_country', pageState['country_1'])
+        urlParams.append('second_country', pageState['country_2'])
+        window.open(`medal-table.html?${urlParams.toString()}` , '_self')
+    }
+
   // DOM Object Event Listeners
     function searchHandler(e) {
         e.preventDefault()
         const btnValue = parseInt(e.target.value)
         const countryObj = getCountry(textInputs[btnValue - 1].value)
         if (countryObj) {
-        setCountry(countryObj, btnValue)
+            setCountry(countryObj, btnValue)
+            console.log(pageState)
+        } else {
+            alert('Error - Could not find country')
         }
     }
 
@@ -128,6 +150,10 @@ console.log(pageState)
 
     submitBtn1.addEventListener('click', searchHandler)
     submitBtn2.addEventListener('click', searchHandler)
+    tableViewerBtn.addEventListener('click', pageTransition)
+
+  // Function Calls 
+    setCountryData()
 }
 
 window.addEventListener('DOMContentLoaded', pageHandler)

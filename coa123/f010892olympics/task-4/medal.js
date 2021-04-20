@@ -1,7 +1,5 @@
 /* eslint-disable indent */
 function pageHandler() {
-    console.log('Let\'s go!!!')
-
     const pageState = {
         countryData: null,
         searchResults: null,
@@ -32,8 +30,6 @@ function pageHandler() {
         renderSelector()
         renderTable()
     }
-
-    setCountryData()
 
   // Sorting Functionality
     function sortHandler(e) {
@@ -247,6 +243,8 @@ function pageHandler() {
     addCountryBtn.addEventListener('click', selectHandler)
     clearCountriesBtn.addEventListener('click', clearSelection)
     compareCountriesBtn.addEventListener('click', pageTransition)
+
+    setCountryData()
 }
 
 window.addEventListener('DOMContentLoaded', pageHandler)

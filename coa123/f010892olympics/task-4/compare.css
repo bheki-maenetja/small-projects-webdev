@@ -22,7 +22,7 @@ main {
 
 /* Page Transition */
 div.page-transition {
-    display: flex;
+    display: none;
     justify-content: center;
     align-items: center;
     padding: 5px 0;
