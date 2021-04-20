@@ -2,11 +2,13 @@
 @import url('common.css');
 
 /* General Styling */
-body {
+main {
     background-color: palegreen;
     display: flex;
     justify-content: center;
     align-items: center;
+    height: 100%;
+    width: 100%;
 }
 
 .table-container {

@@ -9,57 +9,64 @@
     <script src="medal.js"></script>
 </head>
 <body>
-    <main class="table-container">
-        <table class="medal-table">
-            <thead>
-                <tr>
-                    <th colspan="9">
-                        <form action="">
-                            <div class="form-container">
-                                <input 
-                                    type="text"
-                                    id="country-input"
-                                    placeholder="Search for countries by ISO ID"
-                                    maxlength="3"
-                                >
-                                <button>Search</button>
-                            </div>
-                            <div class="form-container">
-                                <select name="" id="country-select"></select>
-                                <button id="add-country">Add</button>
-                                <button id="clear-countries">Clear</button>
-                                <button id="compare-countries">Compare Countries</button>
-                            </div>
-                        </form>
-                        <span id="displayed_countries"></span>
-                    </th>
-                </tr>
-                <tr>
-                    <th>No.</th>
-                    <th>Overall Rank</th>
-                    <th class="rank-critereon selected ascending" data-value="country_name">Name</th>
-                    <th class="rank-critereon" data-value="num_cyclists">Number of Cyclists</th>
-                    <th class="rank-critereon" data-value="avg_cyclist_age">Average Age</th>
-                    <th class="rank-critereon" data-value="gold">Gold Medals</th>
-                    <th class="rank-critereon" data-value="silver">Silver Medals</th>
-                    <th class="rank-critereon" data-value="bronze">Bronze Medals</th>
-                    <th class="rank-critereon" data-value="total">Total Medals</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>#</td>
-                    <td>#</td>
-                    <td>Republic of Australisia</td>
-                    <td>17</td>
-                    <td>25</td>
-                    <td>15</td>
-                    <td>16</td>
-                    <td>34</td>
-                    <td>104</td>
-                </tr>
-            </tbody>
-        </table>
+    <nav class="navbar">
+        <a href="home.html" class="nav-link">Home</a>
+        <a href="country-compare.html" class="nav-link">Country Comparision</a>
+        <a href="medal-table.html" class="nav-link">Medal Table</a>
+    </nav>
+    <main>
+        <section class="table-container">
+            <table class="medal-table">
+                <thead>
+                    <tr>
+                        <th colspan="9">
+                            <form action="">
+                                <div class="form-container">
+                                    <input 
+                                        type="text"
+                                        id="country-input"
+                                        placeholder="Search for countries by ISO ID"
+                                        maxlength="3"
+                                    >
+                                    <button>Search</button>
+                                </div>
+                                <div class="form-container">
+                                    <select name="" id="country-select"></select>
+                                    <button id="add-country">Add</button>
+                                    <button id="clear-countries">Clear</button>
+                                    <button id="compare-countries">Compare Countries</button>
+                                </div>
+                            </form>
+                            <span id="displayed_countries"></span>
+                        </th>
+                    </tr>
+                    <tr>
+                        <th>No.</th>
+                        <th>Overall Rank</th>
+                        <th class="rank-critereon selected ascending" data-value="country_name">Name</th>
+                        <th class="rank-critereon" data-value="num_cyclists">Number of Cyclists</th>
+                        <th class="rank-critereon" data-value="avg_cyclist_age">Average Age</th>
+                        <th class="rank-critereon" data-value="gold">Gold Medals</th>
+                        <th class="rank-critereon" data-value="silver">Silver Medals</th>
+                        <th class="rank-critereon" data-value="bronze">Bronze Medals</th>
+                        <th class="rank-critereon" data-value="total">Total Medals</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>#</td>
+                        <td>#</td>
+                        <td>Republic of Australisia</td>
+                        <td>17</td>
+                        <td>25</td>
+                        <td>15</td>
+                        <td>16</td>
+                        <td>34</td>
+                        <td>104</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
     </main>
 </body>
 </html>

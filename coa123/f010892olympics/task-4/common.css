@@ -15,4 +15,11 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+    background-color: navy;
+}
+
+.navbar > .nav-link {
+    text-decoration: none;
+    padding: 10px;
+    color: white;
 }
