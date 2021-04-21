@@ -7,10 +7,12 @@
     <title>Home Page</title>
 </head>
 <style>
+    @import url('https://fonts.googleapis.com/css2?family=Original+Surfer&display=swap');
+
     * {
         box-sizing: border-box;
         margin: 0;
-        font-family: helvetica;
+        font-family: 'Original Surfer', 'helvetica';
     }
 
     body {
@@ -39,17 +41,44 @@
         padding-bottom: 5px;
         border-bottom: 1px solid white;
         text-align: center;
+        margin-bottom: 10px;
     }
 
     .home-btn {
         width: 400px;
         height: 100px;
         margin: 10px 0;
-        background-color: aqua;
         text-decoration: none;
         display: flex;
         justify-content: center;
         align-items: center;
+        border-radius: 15px;
+        font-size: 20px;
+        opacity: 0.9;
+    }
+
+    #compare-btn {
+        background-color: deepskyblue;
+        color: navy;
+        border: 2px solid navy;
+    }
+
+    #compare-btn:hover {
+        background-color: blue;
+        color: cyan;
+        border: 5px solid cyan;
+    }
+
+    #medal-btn {
+        background-color: palegreen;
+        color: green;
+        border: 2px solid darkgreen;
+    }
+
+    #medal-btn:hover {
+        background-color: green;
+        color: greenyellow;
+        border: 5px solid greenyellow;
     }
 </style>
 <script>
