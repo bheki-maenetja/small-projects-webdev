@@ -78,7 +78,7 @@ function pageHandler() {
         if (sortDsc) {
             if (critereon != 'country_name') {
                 tempResults.sort((a, b) => {
-                    return parseInt(a[critereon]) < parseInt(b[critereon]) ? 1 : -1
+                    return parseFloat(a[critereon]) < parseFloat(b[critereon]) ? 1 : -1
                 })
             } else {
                 tempResults.sort((a, b) => {
@@ -88,7 +88,7 @@ function pageHandler() {
         } else {
             if (critereon != 'country_name') {
                 tempResults.sort((a, b) => {
-                    return parseInt(a[critereon]) > parseInt(b[critereon]) ? 1 : -1
+                    return parseFloat(a[critereon]) > parseFloat(b[critereon]) ? 1 : -1
                 })
             } else {
                 tempResults.sort((a, b) => {
@@ -104,11 +104,11 @@ function pageHandler() {
         if (critereon != 'country_name') {
             if (critereon === 'avg_cyclist_age') {
                 tempResults.sort((a, b) => {
-                    return parseInt(a[critereon]) >= parseInt(b[critereon]) ? 1 : -1
+                    return parseFloat(a[critereon]) >= parseFloat(b[critereon]) ? 1 : -1
                 })
             } else {
                 tempResults.sort((a, b) => {
-                    return parseInt(a[critereon]) <= parseInt(b[critereon]) ? 1 : -1
+                    return parseFloat(a[critereon]) <= parseFloat(b[critereon]) ? 1 : -1
                 })
             }
         } else {
