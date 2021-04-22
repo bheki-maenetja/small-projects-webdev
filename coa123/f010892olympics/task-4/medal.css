@@ -7,16 +7,19 @@ main {
     display: flex;
     justify-content: center;
     align-items: center;
-    /* height: 100%;
-    width: 100%; */
-    background-color: palegreen;
+    background-color: lightgreen;
+}
+
+* {
+    font-family: 'Comic Sans Ms', cursive;
 }
 
 .table-container {
     max-height: 550px;
     max-width: 90%;
     overflow-y: scroll;
-    border: 5px solid green;
+    border: 5px solid lime;
+    box-shadow: 0 0 10px 5px black;
 }
 
 .table-container * {
@@ -26,7 +29,8 @@ main {
 /* Forms */
 form {
     display: flex;
-    background-color: rgba(0,0,0,0.3);
+    background-color: darkgreen;
+    padding: 10px;
 }
 
 .form-container {
@@ -44,6 +48,13 @@ form {
     border: none;
     border-radius: 10px 0 0 10px;
     padding: 10px;
+    background-color: mediumseagreen;
+    color: white
+}
+
+::placeholder {
+    color: white;
+    font-size: 1.5vw;
 }
 
 button#clear-countries, button#compare-countries {
@@ -58,18 +69,19 @@ select {
 
 /* Table Formatting */
 table, th, td {
-    border: 1px solid darkgreen;
+    border: 1px solid black;
     border-collapse: collapse;
 }
 
 th {
     padding: 10px;
-    background-color: navy;
+    background-color: seagreen;
     color: white
 }
 
 thead > tr:first-child > th {
-    background-color:aqua;
+    /* background-color:aqua; */
+    padding: 0;
 } 
 
 thead > tr:nth-child(2) > th {
@@ -78,7 +90,7 @@ thead > tr:nth-child(2) > th {
 }
 
 th.rank-critereon {
-    background-color: blueviolet;
+    background-color: forestgreen;
     color: white;
 }
 
@@ -87,7 +99,7 @@ th.rank-critereon:hover {
 }
 
 th.selected {
-    background-color: red;
+    background-color: limegreen;
     color: white;
 }
 
@@ -103,8 +115,13 @@ td {
     padding: 10px;
 }
 
+tr {
+    background-color: palegreen;
+}
+
 tr:hover {
-    background-color: yellow;
+    background-color: darkgreen;
+    color: lime;
 }
 
 .medal-table {

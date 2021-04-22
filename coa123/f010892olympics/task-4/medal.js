@@ -12,6 +12,7 @@ function pageHandler() {
     const tableBody = document.querySelector('tbody')
     const rankCritereons = document.querySelectorAll('.rank-critereon')
     const countryInput = document.querySelector('#country-input')
+    const countrySearchBtn = document.querySelector('#search-countries')
     const countrySelector = document.querySelector('#country-select')
     const addCountryBtn = document.querySelector('#add-country')
     const clearCountriesBtn = document.querySelector('#clear-countries')
@@ -255,6 +256,7 @@ function pageHandler() {
     })
 
     countryInput.addEventListener('input', validateInput)
+    countrySearchBtn.addEventListener('click', (e) => e.preventDefault())
     addCountryBtn.addEventListener('click', selectHandler)
     clearCountriesBtn.addEventListener('click', clearSelection)
     compareCountriesBtn.addEventListener('click', pageTransition)

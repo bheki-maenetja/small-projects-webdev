@@ -1,3 +1,6 @@
+/* Imports */
+@import url('https://fonts.googleapis.com/css2?family=Original+Surfer&display=swap');
+
 /* General Styling */
 * {
     box-sizing: border-box;
@@ -26,4 +29,5 @@ body {
     text-decoration: none;
     padding: 10px;
     color: white;
+    font-family: 'Original Surfer', 'helvetica';
 }
