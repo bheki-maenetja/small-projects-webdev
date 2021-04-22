@@ -57,14 +57,56 @@ form {
     font-size: 1.5vw;
 }
 
+button {
+    border: none;
+    background-color: lightgreen;
+    color: darkgreen;
+    /* border: 1px solid mediumseagreen; */
+}
+
+button:hover {
+    background-color: green;
+    color: white;
+    cursor: pointer;
+}
+
 button#clear-countries, button#compare-countries {
     display: none;
+}
+
+button#clear-countries {
+    background-color: lightcoral;
+    color: white;
+    /* border: 1px solid red */
+}
+
+button#compare-countries {
+    background-color: dodgerblue;
+    color: white;
+    /* border: 1px solid blue; */
+}
+
+button#compare-countries:hover {
+    background-color: navy;
+    color: cyan;
+}
+
+button#clear-countries:hover {
+    background-color: red;
+    color: pink;
 }
 
 select {
     border: none;
     border-radius: 10px 0 0 10px;
     padding: 10px;
+    background-color: mediumseagreen;
+    color: white
+}
+
+select > option {
+    background-color: mediumseagreen;
+    color: white
 }
 
 /* Table Formatting */
