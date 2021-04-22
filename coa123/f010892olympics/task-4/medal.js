@@ -196,7 +196,7 @@ function pageHandler() {
         if (searchResults.length === 0) {
             tableBody.innerHTML = `
                 <tr>
-                    <td colspan=8>Could not find anything matching your search</td>
+                    <td colspan=9>Could not find anything matching your search</td>
                 </tr>
             `
         } else {

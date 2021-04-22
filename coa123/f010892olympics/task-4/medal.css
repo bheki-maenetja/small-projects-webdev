@@ -15,10 +15,11 @@ main {
 }
 
 .table-container {
-    max-height: 550px;
+    max-height: 600px;
     max-width: 90%;
     overflow-y: scroll;
     border: 5px solid lime;
+    border-radius: 25px;
     box-shadow: 0 0 10px 5px black;
 }
 
@@ -61,7 +62,6 @@ button {
     border: none;
     background-color: lightgreen;
     color: darkgreen;
-    /* border: 1px solid mediumseagreen; */
 }
 
 button:hover {
@@ -77,13 +77,11 @@ button#clear-countries, button#compare-countries {
 button#clear-countries {
     background-color: lightcoral;
     color: white;
-    /* border: 1px solid red */
 }
 
 button#compare-countries {
     background-color: dodgerblue;
     color: white;
-    /* border: 1px solid blue; */
 }
 
 button#compare-countries:hover {
