@@ -19,7 +19,22 @@ div.page-transition {
     justify-content: center;
     align-items: center;
     padding: 5px 0;
-    background-color: blueviolet;
+    background-color: steelblue;
+}
+
+.page-transition > button {
+    background-color: navy;
+    color: white;
+    padding: 5px;
+    border: 1px solid cyan;
+    border-radius: 5px;
+}
+
+.page-transition > button:hover {
+    background-color: cyan;
+    color: navy;
+    cursor: pointer;
+    border: 1px solid navy
 }
 
 /* Country Information */
