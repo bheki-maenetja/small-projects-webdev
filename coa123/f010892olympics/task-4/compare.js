@@ -141,7 +141,6 @@ function pageHandler() {
         const countryObj = getCountry(textInputs[btnValue - 1].value)
         if (countryObj) {
             setCountry(countryObj, btnValue)
-            console.log(pageState)
         } else {
             alert('Error - Could not find country')
         }
