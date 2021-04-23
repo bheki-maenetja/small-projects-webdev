@@ -27,7 +27,7 @@ div.page-transition {
     flex-grow: 1;
     height: 100%;
     max-width: 50%;
-    padding: 20px;
+    /* padding: 20px; */
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -42,6 +42,8 @@ div.page-transition {
 .country-info {
     display: flex;
     flex-direction: column;
+    width: 90%;
+    margin: 0 auto;
     padding: 20px;
     border: 5px solid cyan;
     border-radius: 20px;
@@ -49,16 +51,18 @@ div.page-transition {
 }
 
 .country-info > h2 {
-    font-size: 4vw;
+    font-size: 45px;
     text-align: center;
+    border-bottom: 2px solid white;
+    margin-bottom: 5px;
 }
 
 .country-info > h3 {
-    font-size: 3vw;
+    font-size: 35px;
 }
 
 .country-info li {
-    font-size: 2vw;
+    font-size: 25px;
 }
 
 /* Tables */
@@ -66,6 +70,7 @@ div.page-transition {
     overflow: scroll;
     max-height: 300px;
     border: 2px solid cyan;
+    margin-top: 10px;
 }
 
 .table-wrapper * {
@@ -84,11 +89,11 @@ table, th, td {
 th:not(.main-heading) {
     position: sticky;
     top: 0;
-    background-color: cadetblue;
+    background-color: slateblue;
 }
 
 th.main-heading {
-    background-color: red;
+    background-color: navy;
 }
 
 th, td {
@@ -98,7 +103,7 @@ th, td {
 /* Forms */
 .country-selector {
     min-height: 90px;
-    width: 100%;
+    width: 90%;
     display: flex;
     justify-content: center;
     align-items: center;
