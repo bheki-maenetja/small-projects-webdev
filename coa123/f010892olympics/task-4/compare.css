@@ -27,12 +27,15 @@ div.page-transition {
     flex-grow: 1;
     height: 100%;
     max-width: 50%;
-    /* padding: 20px; */
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     background-color: royalblue;
+}
+
+.info-wrapper {
+    width: 100%;
 }
 
 .compare-column:hover {
@@ -69,7 +72,9 @@ div.page-transition {
 .table-wrapper {
     overflow: scroll;
     max-height: 300px;
-    border: 2px solid cyan;
+    width: 100%;
+    border: 5px solid cyan;
+    border-radius: 20px;
     margin-top: 10px;
 }
 
@@ -77,27 +82,32 @@ div.page-transition {
     font-size: 1vw;
 }
 
-.table-wrapper, table {
+.table {
     width: 100%;
 }
 
 table, th, td {
-    border: 1px solid cyan;
+    border: 1px solid navy;
     border-collapse: collapse;
 }
 
 th:not(.main-heading) {
     position: sticky;
     top: 0;
-    background-color: slateblue;
+    background-color: steelblue;
 }
 
 th.main-heading {
-    background-color: navy;
+    background-color: darkblue;
 }
 
 th, td {
     padding: 10px;
+}
+
+tr.standard-row:hover {
+    background-color: blue;
+    color: cyan
 }
 
 /* Forms */

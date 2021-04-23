@@ -92,7 +92,7 @@ function pageHandler() {
                             </tr>
                         ${countryInfo.cyclists.map(cyclist => {
                             return `
-                                <tr>
+                                <tr class="standard-row">
                                     <td>${cyclist.name}</td>
                                     <td>${cyclist.gender}</td>
                                     <td>${cyclist.age}</td>
@@ -107,7 +107,7 @@ function pageHandler() {
                     </div>
                     `.replaceAll(',', '')
                     : 
-                    '<h3>This country has no cyclists<h3>'}
+                    '<p style="margin-top: 10px; text-align: center">This country has no cyclists<p>'}
             </div>
             `
     }
