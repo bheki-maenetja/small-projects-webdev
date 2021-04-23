@@ -51,6 +51,7 @@ div.page-transition {
     border: 5px solid cyan;
     border-radius: 20px;
     color: white;
+    box-shadow: 0 0 15px 2px navy;
 }
 
 .country-info > h2 {
