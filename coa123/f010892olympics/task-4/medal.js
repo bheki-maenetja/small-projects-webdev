@@ -150,11 +150,11 @@ function pageHandler() {
         countryInput.value = ''
         const isoId = countrySelector.value
 
-        if (clearCountriesBtn.style.display != 'block') {
-            clearCountriesBtn.style.display = 'block'
-        }
-
+        
         if (isoId != '') {
+            if (clearCountriesBtn.style.display != 'block') {
+                clearCountriesBtn.style.display = 'block'
+            }
             pageState['selected_countries'].push(isoId)
             pageState['searchResults'] = pageState['countryData'].filter(country => {
                 return pageState['selected_countries'].includes(country.ISO_id)
