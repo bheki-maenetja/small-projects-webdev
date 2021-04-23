@@ -66,8 +66,8 @@ function pageHandler() {
         domObj.innerHTML = `
             <div class="country-info">
                 <h2>${countryInfo.country_name} (${countryInfo.ISO_id})</h2>
-                <h3>Population: ${countryInfo.population}</h3>
-                <h3>GDP: $${countryInfo.gdp}</h3>
+                <h3>Population: ${formatBigNumber(countryInfo.population)}</h3>
+                <h3>GDP: $${formatBigNumber(countryInfo.gdp)}</h3>
                 <h3>Total Medals: ${countryInfo.total}</h3>
                 <ul>
                     <li>Gold: ${countryInfo.gold}</li>
@@ -119,6 +119,19 @@ function pageHandler() {
         urlParams.append('first_country', pageState['country_1'])
         urlParams.append('second_country', pageState['country_2'])
         window.open(`medal-table.html?${urlParams.toString()}` , '_self')
+    }
+
+  // Utility Functions
+    function formatBigNumber(bigNum) {
+        if (Math.floor(bigNum / (10 ** 12)) > 0) {
+            return `${parseFloat(bigNum / (10 ** 12)).toFixed(2)} trn`
+        } else if (Math.floor(bigNum / (10 ** 9)) > 0) {
+            return `${parseFloat(bigNum / (10 ** 9)).toFixed(2)} bn`
+        } else if (Math.floor(bigNum / (10 ** 6)) > 0) {
+            return `${parseFloat(bigNum / (10 ** 6)).toFixed(2)} mil`
+        } else {
+            return `${bigNum}`
+        }
     }
 
   // DOM Object Event Listeners
