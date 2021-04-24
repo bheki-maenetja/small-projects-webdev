@@ -120,7 +120,6 @@ th {
 }
 
 thead > tr:first-child > th {
-    /* background-color:aqua; */
     padding: 0;
 } 
 
