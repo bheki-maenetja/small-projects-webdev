@@ -71,26 +71,24 @@
     $dbname = "coa123cdb";
     $servername = "localhost";
 
-    $ISO_id = $_REQUEST['country_id'];
-    $part_name = $_REQUEST['part_name'];
-
-    $conn = mysqli_connect($servername, $username, $password, $dbname);
-
+    $conn = mysqli_connect($servername, $username, $password, $dbname); // connection to the database
+    
     if (!$conn) {
         die("Connection failed: " . mysqli_connect_error());
     }
 
-    $db_query = generateQuery();
+    $ISO_id = $_REQUEST['country_id']; // ISO ID input value from athletes.html
+    $part_name = $_REQUEST['part_name']; // part input value from athletes.html
 
-    $search_result = mysqli_query($conn, $db_query);
-
-    if (mysqli_num_rows($search_result) > 0){
-        generateTable();
-    } else {
-        echo "<h2>No results matching your search -- Sorry 😬</h2>";
-    }
-    
     function generateTable() {
+        /* 
+        PARAMETERS
+            * None
+        RETURN VALUES
+            * None
+        WHAT DOES THIS FUNCTION DO?
+            * generates a table representing the search results of a given database query
+        */
         global $search_result;
         echo "<div class='table-container'>";
         echo "<table>";
@@ -114,6 +112,14 @@
     }
 
     function generateQuery() {
+        /* 
+        PARAMETERS
+            * None
+        RETURN VALUES
+            * a string representing a query to the database
+        WHAT DOES THIS FUNCTION DO?
+            * creates a database query according to the given input values
+        */
         global $ISO_id, $part_name;
         $base_query = "SELECT name, gender, ROUND(weight / POWER(height/100,2), 3) as BMI from Cyclist";
         if (trim($ISO_id) == "" && trim($part_name) == "") {
@@ -126,6 +132,16 @@
             return $base_query . " WHERE name LIKE '%$part_name%' and ISO_id='$ISO_id'";
         }
     }
+
+    $db_query = generateQuery();
+    $search_result = mysqli_query($conn, $db_query);
+
+    if (mysqli_num_rows($search_result) > 0){
+        generateTable();
+    } else {
+        echo "<h2>No results matching your search -- Sorry 😬</h2>";
+    }
+
     mysqli_close($conn);
 ?>
 </body>

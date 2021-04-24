@@ -13,7 +13,7 @@
     $dbname = "coa123cdb";
     $servername = "localhost";
 
-    $conn = mysqli_connect($servername, $username, $password, $dbname); // connecting to database
+    $conn = mysqli_connect($servername, $username, $password, $dbname); // connection to the database
 
     if (!$conn) {
         die("Connection failed: " . mysqli_connect_error());
