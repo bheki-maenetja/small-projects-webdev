@@ -142,7 +142,7 @@ function pageHandler() {
         if (countryObj) {
             setCountry(countryObj, btnValue)
         } else {
-            alert('Error - Could not find country')
+            alert('Error - Could not find the country you\'re look for')
         }
     }
 
