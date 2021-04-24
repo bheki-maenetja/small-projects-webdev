@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>BMI Task</title>
 </head>
 <style>
     * {
@@ -73,6 +73,7 @@
 </style>
 <body>
 <?php
+    // Array to collect all input values from bmi.html
     $values = array(
         "minWeight"=>$_REQUEST['min_weight'], 
         "maxWeight"=>$_REQUEST['max_weight'], 
@@ -80,8 +81,15 @@
         "maxHeight"=>$_REQUEST['max_height']
     );
     
-    $inputsValid = validateInputs();
     function validateInputs() {
+        /* 
+        PARAMTERS
+            * None
+        RETURN VALUES
+            * A boolean value representing whether or not all input values are valid
+        WHAT DOES THIS FUNCTION DO?
+            * Makes sure that all inputs are valid and the minimum values are less than the maximum values
+        */
         global $values;
 
         foreach ($values as $key => $value) {
@@ -105,12 +113,19 @@
         }
         return TRUE;
     }
-
-    if ($inputsValid) {
-        generateTable($values['minWeight'], $values['maxWeight'], $values['minHeight'], $values['maxHeight']);
-    }
-
+    
     function generateTable($minWeight, $maxWeight, $minHeight, $maxHeight) {
+        /* 
+        PARAMERTERS
+            * minWeight -> integer value representing the minimum weight
+            * maxWeight -> integer value representing the maximum weight
+            * minHeight -> integer value representing the minimum height
+            * maxHeight -> representing the maximum height
+        RETURNS VALUES
+            * None
+        WHAT DOES THIS FUNCTION DO?
+            * Generates a table of bmi values within the given height and weight ranges
+        */
         echo "<div class='table-container'>";
         echo "<table>";
         for ($w=$minWeight-5; $w<=$maxWeight; $w=$w+5) {
@@ -137,11 +152,25 @@
     }
 
     function getBmi($weight, $height) {
+        /* 
+        PARAMETERS
+            * weight -> integer value representing a given weight
+            * height -> integer value representing a given height
+        RETURN VALUES
+            * a float value representing the bmi value of the given weight and height
+        WHAT DOES THIS FUNCTION DO?
+            * calculates the body mass index (bmi) from the given weight and height
+        */
         if ($height == 0) {
             return 'N/a';
         }
         $bmi = (float) ($weight / pow($height / 100, 2));
         return round($bmi, 3);
+    }
+
+    $inputsValid = validateInputs();
+    if ($inputsValid) {
+        generateTable($values['minWeight'], $values['maxWeight'], $values['minHeight'], $values['maxHeight']);
     }
 
 ?>
