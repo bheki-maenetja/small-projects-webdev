@@ -1,5 +1,6 @@
 /* eslint-disable indent */
 function pageHandler() {
+    
     const pageState = {
         countryData: null,
         searchResults: null,
@@ -118,7 +119,8 @@ function pageHandler() {
         }
         pageState['rankedData'] = tempResults
     }
-  // Searching Functionality
+
+  // Search Functionality
     function validateInput(e) {
         var inputString = e.target.value.trim().toLowerCase()
         inputString.split('').forEach(char => {
@@ -261,6 +263,7 @@ function pageHandler() {
     clearCountriesBtn.addEventListener('click', clearSelection)
     compareCountriesBtn.addEventListener('click', pageTransition)
 
+  // Function Calls  
     setCountryData()
 }
 

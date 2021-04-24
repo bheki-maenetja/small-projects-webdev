@@ -1,7 +1,7 @@
 /* eslint-disable indent */
 function pageHandler() {
 
-    var pageState = {
+    const pageState = {
         all_countries: null,
         country_1: null,
         country_2: null
