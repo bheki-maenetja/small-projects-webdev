@@ -86,10 +86,10 @@
 
         foreach ($values as $key => $value) {
             if (!is_numeric(trim($value))) {
-                echo '<h2>Error - One or more of your values is invalid</h2>';
+                echo '<h2>Error - One or more of your input values is invalid</h2>';
                 return FALSE;
             } else if ((int) $value < 0) {
-                echo '<h2>Error - One or more of your values is less than zero</h2>';
+                echo '<h2>Error - One or more of your input values is less than zero</h2>';
                 return FALSE;
             }
             $values[$key] = (int) $value;
@@ -97,9 +97,10 @@
 
         if ($values['maxWeight'] < $values['minWeight']) {
             echo '<h2>Error - The maximum weight is less than the minimum weight</h2>';
-            if ($values['maxHeight'] < $values['minHeight']) {
-                echo '<h2>Error - The maximum height is less than the minimum height</h2>';
-            }
+            return FALSE;
+        }
+        if ($values['maxHeight'] < $values['minHeight']) {
+            echo '<h2>Error - The maximum height is less than the minimum height</h2>';
             return FALSE;
         }
         return TRUE;
