@@ -1,0 +1,67 @@
+* {
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    height: 100vh;
+    background-color: deepskyblue;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 1em
+}
+
+.container {
+    /* flex-grow: 1; */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* width: 90%; */
+    min-width: 100%;
+    width: auto;
+    height: auto;
+    aspect-ratio: 0.5625;
+    padding: 3em;
+    border: 0.5em solid blue;
+    border-radius: 4em;
+    background-color: white;
+}
+
+#canvas-container {
+    width: 100%;
+    aspect-ratio: 1.77;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 5px;
+    border: 5px solid green;
+}
+
+#my-video {
+    width: fit-content;
+    max-width: 100%;
+    /* aspect-ratio: 1.77; */
+    flex-grow: 1;
+    overflow: hidden;
+    margin-bottom: 2.5em;
+    border: 0.25em solid blue;
+}
+
+#my-canvas {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+#photo-taker {
+    width: 100%;
+    font-size: 3em;
+    margin-bottom: 1em;
+}
+
+#save-btn {
+    width: 100%;
+    font-size: 3em;
+}

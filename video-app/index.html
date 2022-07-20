@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="main.css">
+        <!-- <script src="app.js"></script> -->
+    </head>
+    <body>
+        <div class="container">
+            <video id="my-video"></video>
+            <input id="myFileInput" type="file" accept="image/*;capture=camera" />
+            <!-- <div id="canvas-container">
+                <canvas id="my-canvas"></canvas>
+            </div> -->
+            <!-- <div style="flex-grow: 1; display: flex;"></div> -->
+            <button id="photo-taker">Click to take snapshot</button>
+            <button id="save-btn">Click to save photo</button>
+        </div>
+    </body>
+    <script>
+        const myInput = document.getElementById("myFileInput");
+
+        const sendPic = () => {
+        const file = myInput.files[0];
+        //...
+        };
+
+        myInput.addEventListener("change", sendPic, false);
+    </script>
+</html>
